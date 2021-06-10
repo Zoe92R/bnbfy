@@ -1,0 +1,36 @@
+.explore-card {
+    // & .explore-img {
+    //     max-height: 72px;
+    //     max-width: 250px;
+
+    // }
+    & img {
+        object-fit: cover;
+        position: relative;
+        border-radius: 10px;
+        // width: 300px;
+        height: 200px;
+    }
+    &-title {
+        font-size: $fs14;
+        font-family: Cereal-NormalBold;
+        ::first-letter {
+            text-transform: capitalize
+        }
+    }
+    &-price {
+        font-size: $fs14;
+        & span {
+         font-family: Cereal-HardBold;  
+        }
+    }
+    // .prev-star{
+    //     font-size: 14px;
+    // }
+
+}
+
+.carusel-img{
+    border-radius: 12px;
+
+}

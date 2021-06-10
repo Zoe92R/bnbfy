@@ -1,0 +1,25 @@
+.aments-container{
+    max-width: 600px;
+
+    .aments-list{
+        row-gap: 16px;
+        @media (min-width: $normal-breakpoint) {
+            grid-template-columns: 2fr 1fr;
+        }
+        // grid-template-columns: minmax(100px, 1fr);
+        
+        @media (max-width: $mobile-breakpoint) {
+            grid-template-columns: 1fr;
+        }
+            
+    }
+
+    .amenty-icon {
+        width: 20px;
+        height: 20px;
+        margin-right: 16px;
+    }
+    
+
+}
+

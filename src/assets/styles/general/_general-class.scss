@@ -1,0 +1,21 @@
+.rate-title {
+    margin-bottom: 5px;
+}
+.rate-span {
+    font-size: $fs14;
+    // margin-left: 4px;
+    &-avg {
+        margin-right: 5px;
+        font-family: Cereal-NormalBold;
+    }
+    &-length {
+        font-size: $fs13;
+        color: $grayArticle;
+    }
+}
+.rate-star {
+    color: $rateStarCol;
+    font-size: 14px;
+    margin-right: 4px;
+    align-items: center;
+}

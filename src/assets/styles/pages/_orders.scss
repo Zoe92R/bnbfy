@@ -1,0 +1,73 @@
+.order-table-pic {
+    margin-top: 150px;
+    align-content: center;
+    justify-content: center;
+    align-items: stretch;
+
+    .profile-table {
+        width: 100%;
+        .btn-accept {
+            font-size: 30px;
+            // margin-bottom: 10px;
+        }
+
+        .fa-times-circle,
+        .fa-check-circle {
+            font-size: 24px;
+        }
+
+        // .btn-accepted,
+        // .btn-rejected
+        .btn-reject {
+            font-size: 30px;
+        }
+
+        img {
+            border-radius: 3px;
+            width: 120px;
+        }
+    }
+
+    .btn-accept,
+    .btn-reject {
+        background: none;
+        border: none;
+    }
+
+    .fa-calendar-check,
+    .fa-calendar-times {
+        color: grey;
+    }
+
+    .fa-calendar-check:hover,
+    .fa-check-circle {
+        color: rgb(8, 168, 8);
+    }
+
+    .fa-calendar-times:hover,
+    .fa-times-circle {
+        color: rgb(253, 66, 66);
+    }
+
+    .user-pic {
+        margin-bottom: 30px;
+        width: fit-content;
+        border: 1px solid #dddddd;
+        border-radius: 16px;
+        padding: 12px;
+        img {
+            object-fit: contain;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 22px;
+        }
+        .user-name {
+            // align-items: center;
+            justify-content: center;
+            font-family: Cereal-MediumBold;
+            font-size: 24px;
+            color: #222222;
+        }
+    }
+}

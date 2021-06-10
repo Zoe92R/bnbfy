@@ -1,0 +1,36 @@
+.stay-details {
+    font-size: 16px;
+
+    .reviews-list {
+        padding: 48px 0;
+        grid-template-columns: minmax(400px,1fr) minmax(400px,1fr);
+        row-gap: 27px;
+        column-gap: 70px;
+    }
+    .review {
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .secondary-dets{
+        padding: 48px 0 24px;
+    }
+    .user-info {
+        img {
+            width: 56px;
+            height: 56px;
+            border-radius: 30px;
+            margin: 0 12px 0 0;
+        }
+        .user-name {
+            font-family: Cereal-MediumBold;;
+        }
+        .date{
+            color: rgb(113, 113, 113);
+            font-size: 14px;
+        }
+    }
+    p{
+        line-height: 24px;
+    }
+}

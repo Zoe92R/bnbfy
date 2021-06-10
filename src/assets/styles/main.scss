@@ -1,0 +1,47 @@
+// Setup
+
+@import './setup/_font'; 
+@import './setup/_functions' ;
+@import './setup/_mixin' ;
+@import './setup/_var' ;
+
+//Basic 
+@import './basics/_base'; 
+@import './basics/_helper'; 
+@import './basics/_layout'; 
+
+//General 
+@import './general/_hero.scss';
+@import './general/_general-class.scss';
+
+//Header
+@import './cmps/_header.scss';
+@import './cmps/_userMenu.scss';
+
+//Page
+@import './pages/_stay-app.scss';
+@import './pages/_home-page.scss';
+@import './pages/_stay-details.scss';
+@import './pages/_orders.scss';
+@import './pages/login-signup.scss';
+
+@import './cmps/HomeCmps/_trip-filter.scss';
+
+//Cmp explore
+@import './cmps/ExploreCmps/_stay-list.scss';
+@import './cmps/ExploreCmps/_stay-perview.scss';
+
+//Cmp details
+@import './cmps/DetailsCmps/_stay-details-gallery.scss';
+@import './cmps/DetailsCmps/_booking-modal.scss';
+@import './cmps/DetailsCmps/_amenties-list.scss';
+@import './cmps/DetailsCmps/_booking-summery.scss';
+@import './cmps/DetailsCmps/_google-map.scss';
+@import './cmps/DetailsCmps/_stay-reviews.scss';
+@import './cmps/DetailsCmps/_add-review.scss';
+@import './cmps/DetailsCmps/_guest-choose-details.scss';
+
+
+//Footer
+@import './cmps/_footer.scss';
+

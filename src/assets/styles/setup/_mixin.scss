@@ -1,0 +1,34 @@
+@mixin for-mobile-layout {
+    @media (max-width: $mobile-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-narrow-layout {
+    @media (min-width: $mobile-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-normal-layout {
+    @media (min-width: $narrow-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-wide-layout {
+    @media (min-width: $normal-breakpoint) {
+        @content;
+    }
+}
+@mixin setContainer($height) {
+    max-width: 100%;
+    min-height: $height;
+}
+
+
+@mixin setRepeatGrid($width,$gap) {
+    grid-template-columns: repeat(auto-fill, minmax($width, 1fr));
+    grid-gap: $gap;
+}
+

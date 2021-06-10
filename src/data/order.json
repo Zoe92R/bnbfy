@@ -1,0 +1,152 @@
+[
+  {
+    "createdAt": 1623064200000,
+    "buyer": {
+      "_id": "u1021",
+      "fullname": "David Publisher"
+    },
+    "totalPrice": 140,
+    "startDate": "2021/06/14",
+    "endDate": "2021/06/18",
+    "guests": {
+      "adults": 2,
+      "kids": 0,
+      "infants": 0
+    },
+    "stay": {
+      "_id": "10006578",
+      "name": "House Full Duplex ",
+      "price": 35.00,
+      "picture": "https://res.cloudinary.com/ariecloud/image/upload/v1606634471/houses/parisThree1_hody3n.jpg"
+    },
+    "hostId": "u103",
+    "hostName": "Adel Jonson",
+    "hostAvatar": "https://randomuser.me/api/portraits/women/17.jpg",
+    "status": "pending"
+  },
+  {
+    "createdAt": 1620038280000,
+    "buyer": {
+      "_id": "u1030",
+      "fullname": "Bella Loti"
+    },
+    "totalPrice": 110,
+    "startDate": "2021/03/07",
+    "endDate": "2021/03/15",
+    "guests": {
+      "adults": 2,
+      "kids": 1,
+      "infants": 2
+    },
+    "stay": {
+      "_id": "10006588",
+      "name": "Cozy apartment in the center",
+      "price": 80.00,
+      "picture": "https://res.cloudinary.com/ariecloud/image/upload/v1607262294/users/telaviveight1_nwmig9.jpg"
+    },
+    "hostId": "u103",
+    "hostName": "Adel Jonson",
+    "hostAvatar": "https://randomuser.me/api/portraits/men/17.jpg",
+    "status": "accepted"
+  },
+  {
+    "createdAt": 1614685560000,
+    "buyer": {
+      "_id": "b102",
+      "fullname": "Avi Cohen"
+    },
+    "totalPrice": 110,
+    "startDate": "2021/03/03",
+    "endDate": "2021/03/12",
+    "guests": {
+      "adults": 2,
+      "kids": 1,
+      "infants": 2
+    },
+    "stay": {
+      "_id": "10006599",
+      "name": "Tel-Aviv beautiful penthouse",
+      "price": 80.00,
+      "picture": "https://res.cloudinary.com/ariecloud/image/upload/v1606638987/houses/telAvivFour1_rmqmeg.jpg"
+    },
+    "hostId": "u103",
+    "hostName": "Adel Jonson",
+    "hostAvatar": "https://randomuser.me/api/portraits/men/17.jpg",
+    "status": "accepted"
+  },
+  {
+    "createdAt": 1614582900000,
+    "buyer": {
+      "_id": "Benjamin Skoli",
+      "fullname": "Benjamin Skoli"
+    },
+    "totalPrice": 110,
+    "startDate": "2021/03/02",
+    "endDate": "2021/03/05",
+    "guests": {
+      "adults": 2,
+      "kids": 1,
+      "infants": 2
+    },
+    "stay": {
+      "_id": "10006588",
+      "name": "Cozy apartment in the center",
+      "price": 80.00,
+      "picture": "https://res.cloudinary.com/ariecloud/image/upload/v1607262294/users/telaviveight1_nwmig9.jpg"
+    },
+    "hostId": "u103",
+    "hostName": "Adel Jonson",
+    "hostAvatar": "https://randomuser.me/api/portraits/men/17.jpg",
+    "status": "accepted"
+  },
+  {
+    "createdAt": 1609510500000,
+    "buyer": {
+      "_id": "b101",
+      "fullname": "Dudu Levi"
+    },
+    "totalPrice": 160,
+    "startDate": "2021/01/02",
+    "endDate": "2021/01/06",
+    "guests": {
+      "adults": 2,
+      "kids": 1,
+      "infants": 0
+    },
+    "stay": {
+      "_id": "10006599",
+      "name": "Tel-Aviv beautiful penthouse",
+      "price": 80.00,
+      "picture": "https://res.cloudinary.com/ariecloud/image/upload/v1606638987/houses/telAvivFour1_rmqmeg.jpg"
+    },
+    "hostId": "u103",
+    "hostName": "Adel Jonson",
+    "hostAvatar": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
+    "status": "accepted"
+  },
+  {
+    "createdAt": 1583392500000,
+    "buyer": {
+      "_id": "b102",
+      "fullname": "Jesica Afriat"
+    },
+    "totalPrice": 110,
+    "startDate": "2020/03/06",
+    "endDate": "2020/03/10",
+    "guests": {
+      "adults": 2,
+      "kids": 1,
+      "infants": 2
+    },
+    "stay": {
+      "_id": "10006588",
+      "name": "Cozy apartment in the center",
+      "price": 80.00,
+      "picture": "https://res.cloudinary.com/ariecloud/image/upload/v1607262294/users/telaviveight1_nwmig9.jpg"
+    },
+    "hostId": "u103",
+    "hostName": "Adel Jonson",
+    "hostAvatar": "https://randomuser.me/api/portraits/men/17.jpg",
+    "status": "accepted"
+  }
+]

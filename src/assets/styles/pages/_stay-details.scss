@@ -1,0 +1,84 @@
+.stay-details {
+    
+    .stay-title, .amenities-title, .reviwes-header, .rate-small, .address,  .dets-by-host{
+        // font-family: Cereal-NormalBold;
+        font-family: Cereal-MediumBold;
+    }
+
+    .stay-title{
+        font-size: 26px;
+        padding-top: 120px;
+    }
+
+    .dets-by-host{
+        font-size: 22px;
+    }
+
+    .stay-main-details {
+        padding-top: 24px;
+    }
+
+    .rate-small,
+    .address {
+        font-size: 14px;
+        font-family: Cereal-MediumBold;
+        color: rgb(113, 113, 113);
+        :first-of-type {
+            color: rgb(34, 34, 34);
+        }
+    }
+
+    .amenities-title {
+        padding-bottom: 32px;
+    }
+
+    min-height: 1200px;
+
+    // .booking-modal {
+    //     border: 1px solid rgb(221, 221, 221);
+    //     border-radius: 12px;
+    //     padding: 24px;
+    //     box-shadow: #0000001f 0px 6px 16px;
+    // }
+
+    textarea {
+        width: 600px;
+        height: 150px;
+        resize: none;
+    }
+
+    .aments {
+        padding: 48px 0;
+    }
+    .btn-toggle-review,.btn-add-review-dets, .btn-add-in-add, 
+    .btn-cancel-in-add {
+        background-color: rgb(255, 255, 255);
+        font-family: Cereal-MediumBold;
+        padding: 13px 23px;
+        border-radius: 8px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(34, 34, 34);
+        display: inline-block;
+
+        &:hover{
+            background-color: rgb(241, 241, 241);
+        }
+    }
+
+    .btns-review {
+        margin-bottom: 48px;
+    }
+
+    .btn-add-in-add{
+        margin-right: 48px;
+    }
+
+    // .date-picker-details{
+    //     position: absolute;
+    // }
+
+    .add-review{
+        margin-bottom: 48px;
+    }
+}

@@ -1,0 +1,134 @@
+@import "node_modules/react-datepicker/src/stylesheets/datepicker.scss";
+
+.check-1,
+.check-2 {
+    width: 160px;
+    border: none;
+    background-color: transparent;
+    height: 56px;
+}
+.check-1 {
+    // border-radius: 8px 0 0 0;
+    border-right: 1px solid #717171;
+}
+
+.booking-modal {
+    position: relative;
+    margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    height: fit-content;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    border: none;
+    right: 0;
+    top: 70px;
+    position: sticky;
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: #0000001f 0px 6px 16px;
+    min-width: 372px;
+
+    .price-night {
+        align-self: center;
+    }
+
+    .bold-price {
+        font-family: Cereal-MediumBold;
+    }
+
+    .booking-details-header {
+        padding-bottom: 24px;
+    }
+
+    .date-picker-details {
+        position: absolute;
+        width: 543px;
+        z-index: 100;
+        top: 130px;
+        // top: 61%;
+        right: 6%;
+    }
+
+    // .is-guest-choose,
+    // .call-action {
+    //     width: 320px;
+    // }
+
+    // .is-guest-choose {
+    //     height: 56px;
+    //     border: none;
+    //     border-top: 1px solid #717171;
+    //     background-color: transparent;
+    //     text-align: center;
+    // }
+    .dets-guest-choose {
+        height: 56px;
+        border: none;
+        border-top: 1px solid #717171;
+        background-color: transparent;
+        text-align: center;
+    }
+    .call-action , .btn-reserved{
+        margin-top: 20px;
+        font-family: Cereal-MediumBold;
+        font-size: 16px;
+    }
+
+    .checkIn-guest {
+        flex-direction: column;
+        width: fit-content;
+        border: 1px solid #717171;
+        border-radius: 8px;
+        background-color: transparent;
+        color: inherit;
+    }
+
+    .total-price {
+        font-family: Cereal-MediumBold;
+    }
+    .btn-grad {
+        background-image: (
+            radial-gradient(
+                circle at center center,
+                rgb(255, 56, 92) 0%,
+                rgb(230, 30, 77) 27.5%,
+                rgb(227, 28, 95) 40%,
+                rgb(215, 4, 102) 57.5%,
+                rgb(189, 30, 89) 75%,
+                rgb(189, 30, 89) 100%
+            )
+        );
+    }
+    .btn-grad,
+    .btn-reserved {
+        border: none;
+        box-sizing: border-box;
+        // margin: 10px;
+        padding: 15px 45px;
+        text-align: center;
+        transition: 0.8s;
+        background-size: 200% auto;
+        color: white;
+        box-shadow: 0 0 20px #eee;
+        border-radius: 10px;
+        display: block;
+    }
+
+    .btn-reserved{
+        background-color: rgb(88, 160, 88);
+    }
+
+
+    .btn-grad:hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
+.react-datepicker {
+    display: flex;
+}

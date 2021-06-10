@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+    font-family:  Cereal-light;
+
+}
+
+html {
+    font-size: rem(18px);
+    line-height: 1.6;
+}
+
+body {
+    margin: 0;
+    color:$fontDefColor;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: normal;
+    line-height: 1;
+    margin: 0 0 0.6em;
+}
+button {
+    cursor: pointer;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+a {
+    text-decoration: none;
+    user-select: none;
+}
+div,textarea,input {
+&:focus{
+    outline: 0;
+}
+}

@@ -1,0 +1,21 @@
+.booking-summery {
+    flex-direction: column;
+    row-gap: 8px;
+
+    .calculation {
+        text-decoration: underline;
+    }
+    .wont-be-charged {
+        align-self: center;
+        font-size: 14px;
+        padding-top: 8px;
+    }
+
+    .to-show{
+        display: block;
+    }
+
+    .to-hide{
+        display: none;
+    }
+}

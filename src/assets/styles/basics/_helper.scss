@@ -1,0 +1,41 @@
+.flex {
+
+    display: flex;
+
+    > *.full {
+        flex: 1;
+    }
+    &.flex-end {
+        justify-content:flex-end;
+    }
+    &.column {
+        flex-direction: column;
+    }
+    &.justify-center {
+        justify-content: center;
+    }
+    &.align-center {
+        align-items: center;
+    }
+    &.space-around {
+    justify-content: space-around;
+    }
+    &.space-between {
+    justify-content: space-between;
+    }
+}
+
+
+.grid {
+    display: grid;
+}
+
+/* list helpers */
+
+.clean-list {
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    color: $fontDefColor;
+}

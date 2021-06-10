@@ -1,0 +1,28 @@
+.details-gallery {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 165px 165px;
+    gap: 8px;
+    padding-top: 24px;
+
+    .stay-img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    :first-child {
+        grid-column: 1/span 2;
+        grid-row: 1/span 2;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+
+    :nth-child(3) {
+        border-top-right-radius: 15px;
+    }
+
+    :nth-child(5) {
+        border-bottom-right-radius: 15px;
+    }
+}

@@ -1,0 +1,54 @@
+.hero-sector {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // width: 100%;
+    margin-bottom: 50vh;
+
+    // height: 80vh;
+    .hero-image {
+        /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+        background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url("https://cdn.pixabay.com/photo/2019/06/13/19/10/house-4272309_960_720.jpg");
+
+        /* Set a specific height */
+        height: 60vh;
+        // margin-bottom: 50px;
+        padding: 100px 30px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+
+        /* Position and center the image to scale nicely on all screens */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        // position: relative;
+    }
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+    position: absolute;
+    color: white;
+    z-index: 3;
+    bottom: 50%;
+    font-family: Cereal-HardBold;
+    font-size: $fs42;
+
+    // text-align: center;
+    // position: absolute;
+    // top: 87%;
+    // left: 50%;
+    // font-family: Cereal-HardBold;
+    // font-size: $fs32;
+    // transform: translate(-50%, -50%);
+    // color:  rgb(243, 234, 234);
+
+    & span {
+        color: #ff5a5f;
+        $fs36: rem(36px);
+        font-family: Cereal-Maxbold;
+    }
+}
