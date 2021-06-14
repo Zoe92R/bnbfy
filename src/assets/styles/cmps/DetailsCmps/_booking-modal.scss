@@ -13,6 +13,9 @@
 }
 
 .booking-modal {
+    &.is-to-show {
+        display: block;
+    }
     position: relative;
     margin-top: 48px;
     display: flex;
@@ -71,10 +74,12 @@
         background-color: transparent;
         text-align: center;
     }
-    .call-action , .btn-reserved{
+    .call-action,
+    .btn-reserved {
         margin-top: 20px;
         font-family: Cereal-MediumBold;
         font-size: 16px;
+        width: 100%;
     }
 
     .checkIn-guest {
@@ -117,15 +122,20 @@
         display: block;
     }
 
-    .btn-reserved{
+    .btn-reserved {
         background-color: rgb(88, 160, 88);
     }
-
 
     .btn-grad:hover {
         background-position: right center; /* change the direction of the change here */
         color: #fff;
         text-decoration: none;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+        &.is-to-show {
+            display: none;
+        }
     }
 }
 

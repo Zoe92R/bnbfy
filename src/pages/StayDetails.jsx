@@ -11,8 +11,10 @@ import { AmentiesList } from '../cmps/StayDetailsCmps/AmentiesList.jsx'
 import { BookingModal } from '../cmps/StayDetailsCmps/BookingModal.jsx'
 import { AddReview } from '../cmps/StayDetailsCmps/AddReview.jsx'
 import { utilService } from '../services/utilService.js'
+import { ImgCarusel } from '../cmps/ExploreCmps/ImgCarusel.jsx';
+// import { NerrowBookingModal } from '../cmps/StayDetailsCmps/NerrowBookingModal.jsx';
 
-import {PageLoader} from '../cmps/commonCmps/PageLoader.jsx'
+// import { PageLoader } from '../cmps/commonCmps/PageLoader.jsx'
 
 export class _StayDetails extends Component {
 
@@ -20,11 +22,11 @@ export class _StayDetails extends Component {
         isToSeeAll: false,
         isReviewAddOpen: false,
         modalOpen: false,
-        // avgRate: null,
+        // isHideGallery: false,
+        isCurrentHideGallery: false,
         user: {
             "_id": "u1021",
             "fullname": "Nisim David",
-            // "imgUrl": "https://randomuser.me/api/portraits/men/22.jpg"
         }
     }
 
@@ -33,7 +35,22 @@ export class _StayDetails extends Component {
         await this.props.loadStay(id)
         /*console.log(this.props.currStay)*/
         await this.props.loadOrders()
-        // this.setState({ avgRate: utilService.calRate(this.props.currStay.reviews) }) // bug then refrash
+        window.addEventListener("resize", this.resize.bind(this));
+        this.resize();
+        console.log('window.innerWidth', window.innerWidth)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("resize", this.resize.bind(this));
+    }
+
+
+    resize() {
+        let isHideGallery = (window.innerWidth <= 460);
+        console.log(isHideGallery)
+        if (this.state.isCurrentHideGallery !== this.state.isHideGallery) {
+            this.setState({ isCurrentHideGallery: isHideGallery });
+        }
     }
 
     onSeeAll = () => {
@@ -54,43 +71,14 @@ export class _StayDetails extends Component {
     }
 
     onReserve = async (tripeDetails) => {
-        // Swal.fire({
-        //     title: 'Thank you for your reservation!',
-        //     timer: 5000,
-        //    html: 
-
-        //         `<div style="white-space: pre-line; font-family:Cereal-Normal;">${this.props.currStay.name} in ${this.props.currStay.loc.address}\n${moment(tripeDetails.startDate).format('LL')}-${moment(tripeDetails.startDate).format('LL')}\nTotal price of $${tripeDetails.totalPrice}\nCheck out your email for full details.<div>`
-
-        //     ,
-        //     icon: 'success',
-        //     timerProgressBar: true,
-        //     confirmButtonColor: '#FF5A5F'
-        // })
-
         let timerInterval
         Swal.fire({
             title: 'Thank you for your reservation!',
-            html:  `<div style={{white-space: pre-line; font-family:Cereal-Normal}}>${this.props.currStay.name} in ${this.props.currStay.loc.city} \n \n${moment(tripeDetails.startDate).format('LL')}-${moment(tripeDetails.endDate).format('LL')}\n\n <div>`,
+            html: `<div style={{white-space: pre-line; font-family:Cereal-Normal}}>${this.props.currStay.name} in ${this.props.currStay.loc.city} \n \n${moment(tripeDetails.startDate).format('LL')}-${moment(tripeDetails.endDate).format('LL')}\n\n <div>`,
             timer: 5000,
-            showConfirmButton:true,
+            showConfirmButton: true,
             confirmButtonColor: 'green',
             timerProgressBar: true,
-        //     didOpen: () => {
-        //         Swal.showLoading()
-        //         timerInterval = setInterval(() => {
-        //             const content = Swal.getHtmlContainer()
-        //             if (content) {
-        //                 const b = content.querySelector('b')
-        //                 if (b) {
-        //                     b.textContent = Swal.getTimerLeft()
-        //                 }
-        //             }
-        //         }, 100)
-        //     },
-        //     willClose: () => {
-        //         clearInterval(timerInterval)
-        //     }
-        // })
         })
         const { currStay } = this.props
         const order = utilService.createOrder(tripeDetails, this.state.user, currStay)
@@ -116,9 +104,10 @@ export class _StayDetails extends Component {
                         <span className="address">{currStay.loc.address}</span>
                     </div>
                 </div>
-                <div className="details-gallery grid">
+                {!this.state.isCurrentHideGallery && <div className="details-gallery grid">
                     {currStay.imgUrls.map((currStayImg, idx) => <img key={idx} className="stay-img" src={currStayImg} />)}
-                </div>
+                </div>}
+                {this.state.isCurrentHideGallery && <ImgCarusel stayId={currStay._id} imgs={currStay.imgUrls} />}
                 <div className="booking-modal-details-container flex space-between">
                     <div class-name="stay-details">
                         <div className="secondary-dets">
@@ -145,6 +134,7 @@ export class _StayDetails extends Component {
                 </div>
                 {this.state.isReviewAddOpen && <AddReview currStay={currStay} user={this.state.user} addReview={this.addReview} />}
                 <GoogleMap loc={currStay.loc} />
+                {/* <NerrowBookingModal /> */}
             </div>
 
         )

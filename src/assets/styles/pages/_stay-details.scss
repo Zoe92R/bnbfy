@@ -1,16 +1,22 @@
 .stay-details {
-    
-    .stay-title, .amenities-title, .reviwes-header, .rate-small, .address,  .dets-by-host{
+    // overflow-x: hidden; // not sure about it
+
+    .stay-title,
+    .amenities-title,
+    .reviwes-header,
+    .rate-small,
+    .address,
+    .dets-by-host {
         // font-family: Cereal-NormalBold;
         font-family: Cereal-MediumBold;
     }
 
-    .stay-title{
+    .stay-title {
         font-size: 26px;
         padding-top: 120px;
     }
 
-    .dets-by-host{
+    .dets-by-host {
         font-size: 22px;
     }
 
@@ -50,7 +56,9 @@
     .aments {
         padding: 48px 0;
     }
-    .btn-toggle-review,.btn-add-review-dets, .btn-add-in-add, 
+    .btn-toggle-review,
+    .btn-add-review-dets,
+    .btn-add-in-add,
     .btn-cancel-in-add {
         background-color: rgb(255, 255, 255);
         font-family: Cereal-MediumBold;
@@ -61,7 +69,7 @@
         border-color: rgb(34, 34, 34);
         display: inline-block;
 
-        &:hover{
+        &:hover {
             background-color: rgb(241, 241, 241);
         }
     }
@@ -70,7 +78,7 @@
         margin-bottom: 48px;
     }
 
-    .btn-add-in-add{
+    .btn-add-in-add {
         margin-right: 48px;
     }
 
@@ -78,7 +86,20 @@
     //     position: absolute;
     // }
 
-    .add-review{
+    .add-review {
         margin-bottom: 48px;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+        .nerrow-footer-booking {
+            display: block;
+            position: fixed;
+            bottom: 0;
+            z-index: 999;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid #ddd;
+        }
     }
 }

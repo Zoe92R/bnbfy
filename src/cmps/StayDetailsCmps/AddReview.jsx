@@ -34,9 +34,9 @@ export class AddReview extends Component {
             }
         }))
     }
-    // toggleAddReview = () => {
-    //     this.setState({ isReviewAddOpen: !this.state.isReviewAddOpen })
-    // }
+    toggleAddReview = () => {
+        this.setState({ isReviewAddOpen: !this.state.isReviewAddOpen })
+    }
 
     onAddReview = (ev) => {
         ev.preventDefault()

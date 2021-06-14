@@ -93,7 +93,7 @@ export class BookingModal extends Component {
         const { startDate, endDate, isDatePickerOpen, totalPrice, isGuestChoose, guest, daysNum } = this.state
         const guestAmount = this.guestAmountCulc()
         return (
-            <div className="booking-modal flex column">
+            <div className="booking-modal flex column is-to-show">
                 <div className="flex column">
                     <div className="booking-details-header flex space-between">
                         <div className="price-night"><span className="bold-price">{`$${this.props.currStay.price}`}</span> / night</div>

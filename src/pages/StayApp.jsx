@@ -77,7 +77,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    loadStay,
+    // loadStay,
     loadStays
 
 }

@@ -10,7 +10,7 @@ class _App extends Component {
   render() {
     return (
       <div className="main-container main-layout" >
-        <AppHeader logout={ logout} loggedInUser={ this.props.loggedInUser}/>
+        <AppHeader logout={ this.props.logout} loggedInUser={ this.props.loggedInUser}/>
         {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)}
         <Footer />
       </div>
@@ -26,7 +26,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-
+  logout
 }
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App)
