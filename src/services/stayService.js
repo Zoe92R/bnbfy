@@ -10,6 +10,7 @@ export const stayService = {
   save
 }
 
+//test
 
 async function query(filterBy = {}) {
   // return await storageService.query(STORAGE_KEY, gStays)
