@@ -58,7 +58,7 @@ export class AddReview extends Component {
                 {/* {isReviewAddOpen && */}
                     <form onSubmit={this.onAddReview}>
                         <textarea placeholder="Share your experience here..." onChange={this.handleChange} name="txt"></textarea>
-                        <Rating onChange={this.handleChange} name="rate" />
+                        <Rating className="rating" onChange={this.handleChange} name="rate" />
                         <button className="btn-add-in-add">Add</button>
                         <button className="btn-cancel-in-add"onClick={() => this.toggleAddReview()}>Cancel</button>
                     </form>

@@ -25,7 +25,7 @@ class _Orders extends Component {
     async componentDidMount() {
         await this.props.loadOrders()
         const hostOrders = await orderService.getOrderByHost('u103')
-        console.log('host orders',hostOrders);
+        console.log('hostOrders',hostOrders)
         const { hostAvatar, hostName } = hostOrders[0]
         this.setState({ hostOrders, hostAvatar, hostName })
         if (!this.props.loggedInUser) this.props.history.push('/login')

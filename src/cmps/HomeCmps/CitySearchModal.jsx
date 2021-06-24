@@ -1,6 +1,5 @@
 import '../../assets/styles/font/fontawesome/css/all.css'
 export function CitySearchModal({ countrys, onClickTxtModal }) {
-console.log('countrys:', countrys)
 
 
     return (

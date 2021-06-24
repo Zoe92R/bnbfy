@@ -1,4 +1,6 @@
 .add-review {
+    margin-bottom: 48px;
+
     .avatar-home {
         width: 30px;
         height: 30px;
@@ -6,5 +8,22 @@
         margin-left: 10px;
         border-radius: 50%;
         margin-right: 5px;
+    }
+
+    textarea {
+        width: 600px;
+        height: 150px;
+        resize: none;
+    }
+
+    .rating {
+        display: flex;
+        margin: 15px 0 15px 0px;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+        textarea {
+            width: 100%;
+        }
     }
 }

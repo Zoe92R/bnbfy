@@ -21,7 +21,8 @@
             color: white;
         }
         @media (max-width: $narrow-breakpoint) {
-            display: none;
+            // display: none;
+            min-width: 260px;
         }
     }
     .user-menu {
@@ -92,7 +93,8 @@
             color: #222222;
         }
         @media (max-width: $narrow-breakpoint) {
-            display: none;
+            // display: none;
+            min-width: 260px;
         }
     }
     .user-menu {

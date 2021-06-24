@@ -38,10 +38,8 @@ export class _StayApp extends Component {
         const { stays, trip } = this.props
         // console.log('stays:', stays)
         const staysToShow = this.state.filteredStays ? this.state.filteredStays : stays
-        console.log('staysToShow:', staysToShow.length)
         const guestsAmount = (trip) ? (trip.guest) ? utilService.getAmount(trip.guest, 'guest') : '' : ''
         const stayLength = utilService.getAmount(staysToShow.length, 'stay')
-        console.log('stayLength:', stayLength)
         const tripDate = (trip) ? (trip.startDate && trip.endDate) ? ` · ${moment(trip.startDate).format('MMM-DD')}-${moment(trip.endDate).format('MMM-DD')}` : '' : ''
         // console.log('staysToShow:', staysToShow)
         const dynamicHeadline = (!this.props.match.params.city) ? `Top-rated places to stay` : `Stays in ${this.props.match.params.city}`

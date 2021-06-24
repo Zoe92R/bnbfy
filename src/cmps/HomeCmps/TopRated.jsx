@@ -6,7 +6,6 @@ import {StayPreview} from '../ExploreCmps/StayPreview.jsx'
 
 export function TopRated({ stays }) {
     let sortedRateStay = utilService.sortByRate(stays,4)
-    console.log('sortedRateStay:', sortedRateStay)
     
     return (
         <div className="stay-list grid">

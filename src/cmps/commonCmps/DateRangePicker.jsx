@@ -15,7 +15,6 @@ export class DateRangePicker extends Component {
 
     setDateRange = (dates) => {
         const [start, end] = dates;
-        // console.log('start:', start)
 
         this.setState({
             startDate:

@@ -32,7 +32,6 @@ export class _TripSettings extends Component {
     }
 
     handleChange = (ev) => {
-        console.log('ev:', ev)
         this.setState(prevState => ({
             trip: {
                 ...prevState.trip,
@@ -44,7 +43,6 @@ export class _TripSettings extends Component {
     }
 
     onClickTxtModal = (val) => {
-        console.log('val:', val)
         this.setState((prevState => ({
             trip: {
                 ...prevState.trip,

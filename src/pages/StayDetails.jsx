@@ -14,7 +14,7 @@ import { utilService } from '../services/utilService.js'
 import { ImgCarusel } from '../cmps/ExploreCmps/ImgCarusel.jsx';
 // import { NerrowBookingModal } from '../cmps/StayDetailsCmps/NerrowBookingModal.jsx';
 
-// import { PageLoader } from '../cmps/commonCmps/PageLoader.jsx'
+import { PageLoader } from '../cmps/commonCmps/PageLoader.jsx'
 
 export class _StayDetails extends Component {
 
@@ -33,7 +33,6 @@ export class _StayDetails extends Component {
     async componentDidMount() {
         const id = this.props.match.params.stayId
         await this.props.loadStay(id)
-        /*console.log(this.props.currStay)*/
         await this.props.loadOrders()
         window.addEventListener("resize", this.resize.bind(this));
         this.resize();

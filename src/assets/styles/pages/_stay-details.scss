@@ -47,12 +47,6 @@
     //     box-shadow: #0000001f 0px 6px 16px;
     // }
 
-    textarea {
-        width: 600px;
-        height: 150px;
-        resize: none;
-    }
-
     .aments {
         padding: 48px 0;
     }
@@ -86,9 +80,6 @@
     //     position: absolute;
     // }
 
-    .add-review {
-        margin-bottom: 48px;
-    }
 
     @media (max-width: $mobile-breakpoint) {
         .nerrow-footer-booking {

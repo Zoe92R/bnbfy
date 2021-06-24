@@ -31,7 +31,6 @@ async function getOrderByHost(hostId) {
   const filteredOrders = res.filter(order => {
     return order.hostId === hostId
   })
-  console.log('service', filteredOrders);
   return filteredOrders
 }
 
