@@ -1,14 +1,20 @@
 .hero-sector {
-    margin-bottom: 50vh;
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+    // width: 100%;
+    margin-bottom: 35vh;
 
-    @media (max-width: $narrow-breakpoint) {
-        margin-bottom: 42vh;
-    }
+    // @media (max-width: $narrow-breakpoint) {
+    //     margin-bottom: 42vh;
+    // }
     .hero-image {
         background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
             url("https://cdn.pixabay.com/photo/2019/06/13/19/10/house-4272309_960_720.jpg");
 
-        height: 60vh;
+        /* Set a specific height */
+        height: 70vh;
+        // margin-bottom: 50px;
         padding: 100px 30px;
         position: absolute;
         top: 0;
@@ -25,7 +31,7 @@
     position: absolute;
     color: white;
     z-index: 3;
-    bottom: 50%;
+    bottom: 35%;
     font-family: Cereal-HardBold;
     font-size: $fs42;
 

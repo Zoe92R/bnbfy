@@ -36,28 +36,40 @@ class _HomePage extends Component {
         }
         ]
         ,
+        isScroll: false
     }
     async componentDidMount() {
         await this.props.loadStays()
+        window.addEventListener('scroll', this.onScroll)
     }
 
+    onScroll = () => {
+        const pageYOffset = window.pageYOffset
+        if (pageYOffset > 100) {
+            this.setState({ isScroll: true })
+        } else {
+            this.setState({ isScroll: false })
+        }
+    }
+
+
     render() {
-        console.log('this.props.isLoading :', this.props.isLoading)
-        if (!this.props.stays) return <div>Loading...</div>
-        if (!this.props.stays) return <PageLoader />
         return (
 
             <div className="main-homepage">
                 <React.Fragment>
                     <div className="trip-filter ">
-                        <TripSettings />
+                        {!this.state.isScroll && <TripSettings />}
+                    </div>
+                    <div className="hero-text main-homepage-wrapper">
+                        Come, stay and enjoy your day
+                        <span>.</span>
                     </div>
                     <div className="hero-sector">
-                        <div className="hero-text">Come, stay and enjoy your day<span>.</span></div>
                         <div className="hero-image"></div>
                     </div>
                     <div className="main-homepage-wrapper">
-                        <div className="popular-places">
+                        <div className={this.state.isScroll?`popular-places scroll`:'popular-places'}>
                             <h2 className="popular-places-headline" >Popular Places</h2>
                             <PopularPlaces popularLoc={this.state.popular} />
                         </div>

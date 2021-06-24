@@ -1,4 +1,33 @@
 .login{
-    min-height: 950px;
-    margin-top: 150px;
+    height: 100vh;
+    text-align: center;
+}
+
+.login-select{
+    margin-bottom: 20px;
+    button{
+        background-color:lightblue;
+        border: none;
+        border-radius: 10px;
+        margin-left: 10px;
+        color: rgb(27, 23, 23);
+    }
+}
+
+.signup{
+    text-align: center;
+    input{
+        border-radius: 3px;
+        border: 1px solid rgb(15, 14, 14);
+        outline: none;
+        margin-bottom: 5px;
+        max-width: 200px;
+    }
+    button{
+        background-color:lightgreen;
+        border: none;
+        border-radius: 10px;
+        margin-left: 10px;
+        color: rgb(27, 23, 23);
+    }
 }

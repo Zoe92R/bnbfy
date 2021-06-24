@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router } from 'react-router-dom'
-// import { HashRouter as Router } from 'react-router-dom'
+// import { Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { store } from './store/store.js'
 import './assets/styles/main.scss';
@@ -10,9 +10,9 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <Provider store={store}>
-    {/* <Router> */}
+    <Router>
       <App />
-    {/* </Router> */}
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

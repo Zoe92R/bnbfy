@@ -7,18 +7,15 @@ import { logout } from './store/actions/userActions'
 import { Footer } from './cmps/AppFooter.jsx'
 
 class _App extends Component {
+
   render() {
+    const { loggedInUser, logout } = this.props
     return (
       <div className="main-container main-layout" >
-        <Router>
-        <AppHeader logout={this.props.logout} loggedInUser={this.props.loggedInUser} />
-        {/* <BrowserRouter> */}
-          <Switch>
-            {routes.map(route => <Route key={route.path} exact component={route.component} exact path={route.path} />)}
-          </Switch>
-        {/* </BrowserRouter> */}
+        <AppHeader logout={logout}
+          loggedInUser={loggedInUser} />
+        {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)}
         <Footer />
-        </Router>
       </div>
     )
   }
