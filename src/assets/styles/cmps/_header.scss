@@ -1,24 +1,27 @@
 .main-header {
-    // text-transform: uppercase;
+    text-transform: uppercase;
     box-shadow: 0 15px 10px -15px rgba(19, 20, 22, 0);
+    position: sticky;
+    top: 0;
     z-index: 1;
-    // font-family: Cereal-MediumBold;
+    font-family: Cereal-MediumBold;
     font-size: 14px;
     font-weight: 600;
+    margin-bottom: 30px;
+    // transition: 0.1s;
     .logo {
-        // width: 50%;
         width: fit-content;
         & img {
             max-width: 110px;
             object-fit: cover;
         }
-      
     }
     .main-nav {
         // width: 30%;
-        min-width: 300px;
+        min-width: 150px;
         a {
             color: white;
+            margin-left: 20px;
         }
         @media (max-width: $narrow-breakpoint) {
             display: none;
@@ -27,6 +30,7 @@
     .user-menu {
         width: 77px;
         height: 42px;
+        margin-left: 15px;
         border: 1px solid #dddddd;
         justify-content: center;
         position: relative;
@@ -38,6 +42,7 @@
     .hamburger-header {
         width: 16px;
         height: 16px;
+        cursor: pointer;
         font-weight: 500;
         color: #717171;
     }
@@ -62,70 +67,17 @@
 
 .white {
     box-shadow: 0 15px 10px -15px rgba(19, 20, 22, 0.1);
-    z-index: 1;
-    position: fixed;
-    right: 0;
-    left: 0;
-    // font-family: Cereal-MediumBold;
+    z-index: 4;
+    position: sticky;
+    top: 0;
+    font-family: Cereal-MediumBold;
     font-size: 14px;
     font-weight: 600;
     background-color: #ffffff;
-
-    // .logo {
-    //     // width: 50%;
-    //     width: fit-content;
-    //     & img {
-    //         max-width: 120px;
-    //         object-fit: cover;
-    //         margin-left: -5px;
-    //         margin-top: 5px;
-    //     }
-    //     @media (max-width: $narrow-breakpoint) {
-    //         width: 100%;
-    //     }
-    // }
-
+    // transition: 0.05s;
     .main-nav {
-        // width: 30%;
-        min-width: 300px;
         a {
             color: #222222;
         }
-        @media (max-width: $narrow-breakpoint) {
-            display: none;
-        }
-    }
-    .user-menu {
-        width: 77px;
-        height: 42px;
-        border: 1px solid #dddddd;
-        justify-content: center;
-        position: relative;
-        background-color: #ffffff;
-        border-radius: 21px;
-        vertical-align: middle;
-        padding: 5px 5px 5px 12px;
-    }
-    .hamburger-header {
-        width: 16px;
-        height: 16px;
-        font-weight: 500;
-        color: rgb(113, 113, 113);
-    }
-    .avatar-home-user {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        object-fit: cover;
-        cursor: pointer;
-        margin-right: 5px;
-    }
-
-    .avatar-home {
-        width: 30px;
-        height: 30px;
-        cursor: pointer;
-        margin-left: 10px;
-        border-radius: 50%;
     }
 }

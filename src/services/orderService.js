@@ -42,13 +42,11 @@ async function remove(orderId) {
 
 
 async function save(order) {
-  console.log('order service:', order, 'id', order._id)
   if (order._id) {
     return await httpService.put(`order/${order._id}`, order)
   }
   else {
     const res = await httpService.post('order', order)
-    console.log(res);
     return res
   }
   // const res = await storageService.put(STORAGE_KEY, stay)

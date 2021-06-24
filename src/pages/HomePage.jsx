@@ -33,49 +33,62 @@ class _HomePage extends Component {
         }
         ]
         ,
+        isScroll: false
     }
     async componentDidMount() {
         await this.props.loadStays()
+        window.addEventListener('scroll', this.onScroll)
     }
 
+    onScroll = () => {
+        const pageYOffset = window.pageYOffset
+        if (pageYOffset > 100) {
+            this.setState({ isScroll: true })
+        } else {
+            this.setState({ isScroll: false })
+        }
+    }
+
+
     render() {
-        console.log('this.props.isLoading :', this.props.isLoading )
         return (
-            
+
             <div className="main-homepage">
-               <React.Fragment>
-                <div className="trip-filter ">
-                    <TripSettings />
-                </div>
-                <div className="hero-text">Come, stay and enjoy your day<span>.</span></div>
-                <div className="hero-sector">
-                    <div className="hero-image">
+                <React.Fragment>
+                    <div className="trip-filter ">
+                        {!this.state.isScroll && <TripSettings />}
                     </div>
-                </div>
-                <div className="main-homepage-wrapper">
-                    <div className="popular-places">
-                        <h2 className="popular-places-headline" >Popular Places</h2>
-                        <PopularPlaces popularLoc={this.state.popular} />
+                    <div className="hero-text main-homepage-wrapper">
+                        Come, stay and enjoy your day
+                        <span>.</span>
                     </div>
-                    <div className="see-all flex flex-end">
-                        <Link className="see-all clean-list" to='/stay'>See All</Link>
+                    <div className="hero-sector">
+                        <div className="hero-image"></div>
                     </div>
-                    <div className="top-rated">
-                        <h2>Top Rated Stays</h2>
-                        <TopRated stays={this.props.stays} topRatedIds={this.state.topRatedIds} />
+                    <div className="main-homepage-wrapper">
+                        <div className={this.state.isScroll?`popular-places scroll`:'popular-places'}>
+                            <h2 className="popular-places-headline" >Popular Places</h2>
+                            <PopularPlaces popularLoc={this.state.popular} />
+                        </div>
+                        <div className="see-all flex flex-end">
+                            <Link className="see-all clean-list" to='/stay'>See All</Link>
+                        </div>
+                        <div className="top-rated">
+                            <h2>Top Rated Stays</h2>
+                            <TopRated stays={this.props.stays} topRatedIds={this.state.topRatedIds} />
+                        </div>
+                        <div className="see-all flex flex-end">
+                            <Link className="see-all clean-list" to='/stay'>See All</Link>
+                        </div>
                     </div>
-                    <div className="see-all flex flex-end">
-                        <Link className="see-all clean-list" to='/stay'>See All</Link>
+                    <div className="home-banner">
+                        <div className="content-banner">
+                            <h2>"Home is where your story begins."</h2>
+                            <h5>-Annie Danielson</h5>
+                            <Link className="clean-list" to="/stay"> <button>Let's go! <i className="far fa-hand-point-left"></i></button></Link>
+                            <div className="content-banner-2"><h4>"And all you need is a passport!"</h4></div>
+                        </div>
                     </div>
-                </div>
-                <div className="home-banner">
-                    <div className="content-banner">
-                        <h2>"Home is where your story begins."</h2>
-                        <h5>-Annie Danielson</h5>
-                        <Link className="clean-list" to="/stay"> <button>Let's go! <i className="far fa-hand-point-left"></i></button></Link>
-                        <div className="content-banner-2"><h4>"And all you need is a passport!"</h4></div>
-                    </div>
-                </div>
                 </React.Fragment>
             </div>
 

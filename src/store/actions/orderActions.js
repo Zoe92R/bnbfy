@@ -36,7 +36,6 @@ export function removeOrder(orderId) {
 export function saveOrder(order) {
     return async dispatch => {
         try {
-            console.log('order in action',order);
             const saveOrder = await orderService.save(order)
             const type = order._id ? 'UPDATE_ORDER' : 'ADD_ORDER'
             dispatch({ type, saveOrder })

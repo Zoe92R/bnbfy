@@ -3,14 +3,17 @@ import { Component } from 'react'
 import { connect } from 'react-redux'
 import { routes } from './routes.js'
 import { AppHeader } from './cmps/AppHeader.jsx'
-import{logout} from './store/actions/userActions'
+import { logout } from './store/actions/userActions'
 import { Footer } from './cmps/AppFooter.jsx'
 
 class _App extends Component {
+
   render() {
+    const { loggedInUser, logout } = this.props
     return (
       <div className="main-container main-layout" >
-        <AppHeader logout={ this.props.logout} loggedInUser={ this.props.loggedInUser}/>
+        <AppHeader logout={logout}
+          loggedInUser={loggedInUser} />
         {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)}
         <Footer />
       </div>
@@ -21,7 +24,7 @@ class _App extends Component {
 function mapStateToProps(state) {
   return {
     stays: state.stayModule.stays,
-    loggedInUser:state.userModule.loggedInUser
+    loggedInUser: state.userModule.loggedInUser
   }
 }
 
