@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useParams, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { saveOrder } from "../store/actions/orderActions"
 import Swal from 'sweetalert2'
 import moment from "moment"
@@ -26,13 +26,14 @@ export const Footer = () => {
 
     useEffect(() => {
         if (location.pathname.includes('details')) {
-            screenSize < 500 ? setMobile(true) : setMobile(false)
+            setScreenSize(window.innerWidth)
+            screenSize < 460 ? setMobile(true) : setMobile(false)
         } else {
             setisBookingModal(false)
             setMobile(false)
         }
         console.log('location', location.pathname.includes('details'));
-    }, [mobile, location, screenSize])
+    }, [mobile, location, screenSize, window.innerWidth])
 
     const getAvgRage = () => {
         const avgRate = utilService.calRate(currStay.reviews)
@@ -65,11 +66,10 @@ export const Footer = () => {
             </p>
             {mobile && <button onClick={() => setisBookingModal(true)}>
 
-                {/* <div className="flex space-between"> */}
-                {/* <span>price: {currStay && currStay.price}</span>
+                <div className="flex space-between">
+                    <span>price: ${currStay && currStay.price}</span>
                     <span>Check Aavilability</span>
-                </div> */}
-                Check Aavilability
+                </div>
             </button>}
             {isBookingModal && <BookingModal currStay={currStay}
                 trip={trip}

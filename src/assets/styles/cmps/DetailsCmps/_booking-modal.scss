@@ -132,11 +132,12 @@
         text-decoration: none;
     }
 
-    @media (max-width: $mobile-breakpoint) {
-        &.is-to-show {
-            display: none;
-        }
-    }
+    //need to resolve with the footer
+    // @media (max-width: $mobile-breakpoint) {
+    //     &.is-to-show {
+    //         display: none;
+    //     }
+    // }
 }
 
 .react-datepicker {
