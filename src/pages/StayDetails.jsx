@@ -36,7 +36,7 @@ export class _StayDetails extends Component {
         await this.props.loadOrders()
         window.addEventListener("resize", this.resize.bind(this));
         this.resize();
-        console.log('window.innerWidth', window.innerWidth)
+        // console.log('window.innerWidth', window.innerWidth)
     }
 
     componentWillUnmount() {
@@ -46,7 +46,7 @@ export class _StayDetails extends Component {
 
     resize() {
         let isHideGallery = (window.innerWidth <= 460);
-        console.log(isHideGallery)
+        // console.log(isHideGallery)
         if (this.state.isCurrentHideGallery !== this.state.isHideGallery) {
             this.setState({ isCurrentHideGallery: isHideGallery });
         }
@@ -99,7 +99,10 @@ export class _StayDetails extends Component {
                     <div className="stay-title">{currStay.name}</div>
                     <div >
                         <i className="rate-star fas fa-star"></i>
-                        <span className="rate-small"><span className="rate-num">{this.getAvgRage()}</span><span> ({currStay.reviews.length} reviews) </span></span>
+                        <span className="rate-small">
+                            <span className="rate-num">{this.getAvgRage()}</span>
+                            <span> ({currStay.reviews.length} reviews) </span>
+                        </span>
                         <span className="address">{currStay.loc.address}</span>
                     </div>
                 </div>
@@ -120,7 +123,10 @@ export class _StayDetails extends Component {
                             <AmentiesList aments={currStay.amenities} />
                         </div>
                     </div>
-                    <BookingModal currStay={currStay} trip={this.props.trip} onReserve={this.onReserve} avgRate={this.getAvgRage()} />
+                    <BookingModal currStay={currStay}
+                        trip={this.props.trip}
+                        onReserve={this.onReserve}
+                        avgRate={this.getAvgRage()} />
                 </div>
                 <div>
                     <i className="rate-star fas fa-star"></i>

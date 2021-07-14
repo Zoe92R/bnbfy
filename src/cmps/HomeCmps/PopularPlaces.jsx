@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-
+import {PageLoader} from '../commonCmps/PageLoader.jsx'
 export function PopularPlaces({ popularLoc }) {
+    if(!popularLoc)return <PageLoader/>
     return (
 
         <div className="popular-places-list grid ">
