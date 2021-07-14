@@ -94,8 +94,8 @@ export class _StayDetails extends Component {
         const { currStay } = this.props
         if (!currStay) return <div>Loading...</div>
         return (
-            <div className="stay-details">
-                <div className="stay-main-details">
+            <div className="stay-details main-container main-layout">
+                <div className="stay-main-details ">
                     <div className="stay-title">{currStay.name}</div>
                     <div >
                         <i className="rate-star fas fa-star"></i>

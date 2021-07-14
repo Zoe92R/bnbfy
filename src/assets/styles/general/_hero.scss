@@ -3,20 +3,20 @@
     // top: 0;
     // left: 0;
     // width: 100%;
-    margin-bottom: 35vh;
+    // margin-bottom: 35vh;
 
     // @media (max-width: $narrow-breakpoint) {
     //     margin-bottom: 42vh;
     // }
-    .hero-image {
+    // .hero-image {
         background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
             url("https://cdn.pixabay.com/photo/2019/06/13/19/10/house-4272309_960_720.jpg");
 
         /* Set a specific height */
         height: 70vh;
         // margin-bottom: 50px;
-        padding: 100px 30px;
-        position: absolute;
+        // padding: 100px 30px;
+        // position: absolute;
         top: 0;
         left: 0;
         width: 100%;
@@ -24,7 +24,7 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-    }
+    // }
 }
 
 .hero-text {
@@ -43,10 +43,20 @@
     // font-size: $fs32;
     // transform: translate(-50%, -50%);
     // color:  rgb(243, 234, 234);
+    // grid-column: 2/span 1;
 
     & span {
         color: #ff5a5f;
-        $fs36: rem(36px);
+        font-size: $fs36;
         font-family: Cereal-Maxbold;
+    }
+
+        @media (max-width: $narrow-breakpoint) {
+        font-size: $fs32;
+
+        & span {
+            font-size: $fs32;
+        }
+        
     }
 }

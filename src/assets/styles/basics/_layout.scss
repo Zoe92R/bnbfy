@@ -5,22 +5,21 @@
         minmax(auto, $normal-breakpoint)
         minmax(2rem, 1fr);
 
-    >* {
-        grid-column: 2;
-
+    > * {
+        
         &.full {
             grid-column: 1 / -1;
         }
+        
+        grid-column: 2;
     }
 
     @include for-narrow-layout {
-        grid-template-columns:
-            minmax(2rem, 1fr) minmax(auto, $mobile-breakpoint) minmax(2rem, 1fr);
+        grid-template-columns: minmax(2rem, 1fr) minmax(auto, $mobile-breakpoint) minmax(2rem, 1fr);
     }
 
     @include for-normal-layout {
-        grid-template-columns:
-            minmax(2rem, 1fr) minmax(auto, $narrow-breakpoint) minmax(2rem, 1fr);
+        grid-template-columns: minmax(2rem, 1fr) minmax(auto, $narrow-breakpoint) minmax(2rem, 1fr);
     }
 
     @include for-wide-layout {

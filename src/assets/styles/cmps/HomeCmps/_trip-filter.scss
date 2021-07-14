@@ -1,13 +1,14 @@
 .trip-filter {
     background-color: #fff;
     max-width: 850px;
+    width: 100%;
     margin: 0 auto;
-    z-index: 100;
-    margin-top: 20px;
-    position: relative;
-    position: sticky;
-    top: 15px;
+    z-index: 8;
+    margin-top: 100px;
     border-radius: 80px;
+    // height: fit-content;
+    height: 70px;
+
 
     .filter-warper {
         @media (max-width: $mobile-breakpoint) {
@@ -109,12 +110,12 @@
     background-color: #ff385c;
     border-radius: 50%;
     border: 0;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 20px;
+    margin-right: 9px;
 
     & img {
         width: 16px;
@@ -143,7 +144,7 @@
 .guest-choose {
     position: absolute;
     right: 0;
-    top: 80px;
+    top: 170px;
     z-index: 1;
     background: #fff;
     border-radius: 32px;
@@ -152,7 +153,7 @@
     padding: 16px 32px;
     margin: 0;
     cursor: auto;
-    min-width: 50%;
+    min-width: 38%;
 
     @media only screen and (max-width: 720px) {
         min-width: 100%;
@@ -257,8 +258,8 @@ input[type="search"]::-webkit-search-cancel-button,
 
 .location-choose-modal {
     position: absolute;
-    top: 80px;
-    z-index: 1;
+    top: 170px;
+    z-index: 10;
     background: #fff;
     border-radius: 32px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
@@ -266,7 +267,7 @@ input[type="search"]::-webkit-search-cancel-button,
     padding: 16px 32px;
     margin: 0;
     cursor: auto;
-    min-width: 50%;
+    min-width: 38%;
     @media only screen and (max-width: 720px) {
         min-width: 100%;
     }
