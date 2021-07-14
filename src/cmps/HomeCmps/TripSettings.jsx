@@ -166,7 +166,7 @@ export class _TripSettings extends Component {
             
                     {!trip.endDate &&<div><div className="picker-date-btn-sec-line">Check-out</div> </div>}
                 </button>
-                <div className="flex" style={{ position: "absolute", zIndex: 20, top: '100%', right: "13%" }}>
+                <div className="flex" style={{ position: "absolute", zIndex: 120, top: '100%', right: "13%" }}>
                     {isDatePickerOpen && <DateRangePicker style={{ backgroundColor: 'red' }} setDate={this.setDate}
                         onToggleChoose={this.onToggleChoose} />}</div>
 

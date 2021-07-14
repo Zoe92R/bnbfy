@@ -8,27 +8,33 @@ import hamburger from '../assets/svg/appHeader/hamburger.svg'
 import logo from '../assets/img/Logo/logo-fit.png'
 
 export const _AppHeader = (props) => {
+
     const [userProfileToggle, setUserProfileToggle] = useState(false)
-    const [isScrol, setIsScrol] = useState(false)
+    // const [isScrol, setIsScrol] = useState(false)
 
     useEffect(() => {
-        window.addEventListener('scroll', onScroll)
+        // window.addEventListener('scroll', onScroll)
+        // return () => {
+        //     console.log('removed')
+        //     window.removeEventListener('scroll', onScroll)
+        // }
     });
 
     const toggleProfile = () => {
         setUserProfileToggle(!userProfileToggle)
     }
-    const onScroll = () => {
-        const pageYOffset = window.pageYOffset
-        if (pageYOffset > 100) {
-            setIsScrol(true)
-        } else {
-            setIsScrol(false)
-        }
-    }
+    // const onScroll = () => {
+    //     const pageYOffset = window.pageYOffset
+    //     if (pageYOffset > 100) {
+    //         setIsScrol(true)
+    //     } else {
+    //         setIsScrol(false)
+    //     }
+    // }
 
     const getHeaderClass = () => {
-        return (props.location.pathname !== "/" || isScrol) ? "white" : ""
+        return (props.location.pathname !== "/") ? "white" : "no-display"
+        // return ""
     }
 
     const isUserAvatar = () => {
@@ -43,9 +49,9 @@ export const _AppHeader = (props) => {
         <header className={`main-header main-layout full ${getHeaderClass()}`} >
             <div className="main-header-wrapper flex space-between">
                 <div className="logo"><NavLink exact to="/"><img src={logo} /></NavLink></div>
-                {isScrol && <div className="trip-filter ">
-                    <TripSettings />
-                </div>}
+                {/* {isScrol && <div className="trip-filter ">
+                    <TripSettings /> 
+                </div>}  */}
                 <nav className="main-nav flex align-center space-between">
                     <NavLink exact to="/stay" className="clean-list"> Explore </NavLink>
                     {!props.loggedInUser && <NavLink exact to="/" className="clean-list"> Become a Host </NavLink>}

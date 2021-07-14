@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { loadStays, loadStay } from '../store/actions/stayActions'
 import { TripSettings } from '../cmps/HomeCmps/TripSettings'
+import { AppHeaderHome } from '../cmps/AppHeaderHome'
 import { PopularPlaces } from '../cmps/HomeCmps/PopularPlaces'
 import { TopRated } from '../cmps/HomeCmps/TopRated'
 import portugal from '../assets/img/popular/portugal.jpg'
@@ -12,6 +13,9 @@ import TelAviv from '../assets/img/popular/TelAviv.jpg'
 import Paris from '../assets/img/popular/Paris.jpg'
 import NewYork from '../assets/img/popular/newYork.jpg'
 import { PageLoader } from '../cmps/commonCmps/PageLoader.jsx'
+import { logout } from '../store/actions/userActions.js'
+
+
 
 
 //pics from:"https://www.freestock.com/free-photos/church-village-frias-burgos-spain-1513100516"
@@ -38,14 +42,19 @@ class _HomePage extends Component {
         ,
         isScroll: false
     }
+
     async componentDidMount() {
-        await this.props.loadStays()
         window.addEventListener('scroll', this.onScroll)
+        await this.props.loadStays()
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.onScroll)
     }
 
     onScroll = () => {
         const pageYOffset = window.pageYOffset
-        if (pageYOffset > 100) {
+        if (pageYOffset > 0) {
             this.setState({ isScroll: true })
         } else {
             this.setState({ isScroll: false })
@@ -54,25 +63,27 @@ class _HomePage extends Component {
 
 
     render() {
+        const { loggedInUser, logout } = this.props
         return (
 
-            <div className="main-homepage">
+            <div className="main-homepage main-container main-layout">
+                <AppHeaderHome logout={logout} loggedInUser={loggedInUser} />
                 <React.Fragment>
-                    <div className="trip-filter ">
-                        {!this.state.isScroll && <TripSettings />}
-                    </div>
-                    <div className="hero-text main-homepage-wrapper">
-                        Come, stay and enjoy your day
-                        <span>.</span>
-                    </div>
-                    <div className="hero-sector">
-                        <div className="hero-image"></div>
+                    <div className="hero-sector main-layout grid full">
+                        {!this.state.isScroll && <div className="trip-filter">
+                        {/* {!this.state.isScroll && <div className="trip-filter main-layout"> */}
+                            <TripSettings />
+                        </div>}
+                        <div className="hero-text-wrapper">
+                            <div className="hero-text">Come, stay and enjoy your day
+                                <span>.</span>
+                            </div>
+                        </div>
                     </div>
                     <div className="main-homepage-wrapper">
-                        <div className={this.state.isScroll?`popular-places scroll`:'popular-places'}>
-                            <h2 className="popular-places-headline" >Popular Places</h2>
-                            <PopularPlaces popularLoc={this.state.popular} />
-                        </div>
+                        <h2 className="popular-places-headline" >Popular Places</h2>
+                        <PopularPlaces popularLoc={this.state.popular} />
+                        {/* </div> */}
                         <div className="see-all flex flex-end">
                             <Link className="see-all clean-list" to='/stay'>See All</Link>
                         </div>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadOrders, setOrderStatus,saveOrder } from '../store/actions/orderActions.js'
+import { loadOrders, setOrderStatus, saveOrder } from '../store/actions/orderActions.js'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -25,7 +25,7 @@ class _Orders extends Component {
     async componentDidMount() {
         await this.props.loadOrders()
         const hostOrders = await orderService.getOrderByHost('u103')
-        console.log('hostOrders',hostOrders)
+        console.log('hostOrders', hostOrders)
         const { hostAvatar, hostName } = hostOrders[0]
         this.setState({ hostOrders, hostAvatar, hostName })
         if (!this.props.loggedInUser) this.props.history.push('/login')
@@ -87,48 +87,51 @@ class _Orders extends Component {
         return (
             <React.Fragment>
                 {/* <div>charts</div> */}
-                <div className="order-table-pic flex column">
+                <div className="orders-page main-container main-layout">
 
-                    <div className="user-pic flex column ">
-                        {/* <Dashboard orders={orders} /> */}
-                        <img src={hostAvatar} />
-                        <span className="user-name flex">{hostName}</span>
-                    </div>
-                    <div className="profile-table flex justify-center align-center">
+                    <div className="order-table-pic flex column">
 
-                        <TableContainer component={Paper}>
-                            <Table aria-label="simple table" style={{ minWidth: '650px'}}>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell style={{ padding: '10px', align: "left" }} >Reservation Date</TableCell>
-                                        <TableCell style={{ padding: '10px', align: "left" }}>Stay</TableCell>
-                                        <TableCell style={{ padding: '10px', align: "left" }}>Stay Name</TableCell>
-                                        <TableCell style={{ padding: '10px', align: "left" }}>Booker</TableCell>
-                                        <TableCell style={{ padding: '10px', align: "left" }}>Trip Date</TableCell>
-                                        <TableCell style={{ padding: '10px', textAlign: "center" }}>Nights</TableCell>
-                                        <TableCell style={{ padding: '10px', textAlign: "center" }}>Guests</TableCell>
-                                        <TableCell style={{ padding: '10px', textAlign: "center" }} >Amount</TableCell>
-                                        <TableCell style={{ padding: '10px', textAlign: "center" }} >Status</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {hostOrders.map((order) => (
+                        <div className="user-pic flex column ">
+                            {/* <Dashboard orders={orders} /> */}
+                            <img src={hostAvatar} />
+                            <span className="user-name flex">{hostName}</span>
+                        </div>
+                        <div className="profile-table flex justify-center align-center">
 
-                                        < TableRow key={order._id}>
-                                            <TableCell component="th" scope="row">{this.reservationTime(order)}</TableCell>
-                                            <TableCell align="left" ><img src={order.stay.picture} /></TableCell>
-                                            <TableCell align="left">{order.stay.name}</TableCell>
-                                            <TableCell align="left">{order.buyer.fullname}</TableCell>
-                                            <TableCell align="left">{order.startDate} - {order.endDate}</TableCell>
-                                            <TableCell align="center">{this.getNights(order)}</TableCell>
-                                            <TableCell align="center">{this.getGuests(order)}</TableCell>
-                                            <TableCell align="center">${order.totalPrice}</TableCell>
-                                            <TableCell align="center">{this.orderStatus(order)}</TableCell>
+                            <TableContainer component={Paper}>
+                                <Table aria-label="simple table" style={{ minWidth: '650px' }}>
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell style={{ padding: '10px', align: "left" }} >Reservation Date</TableCell>
+                                            <TableCell style={{ padding: '10px', align: "left" }}>Stay</TableCell>
+                                            <TableCell style={{ padding: '10px', align: "left" }}>Stay Name</TableCell>
+                                            <TableCell style={{ padding: '10px', align: "left" }}>Booker</TableCell>
+                                            <TableCell style={{ padding: '10px', align: "left" }}>Trip Date</TableCell>
+                                            <TableCell style={{ padding: '10px', textAlign: "center" }}>Nights</TableCell>
+                                            <TableCell style={{ padding: '10px', textAlign: "center" }}>Guests</TableCell>
+                                            <TableCell style={{ padding: '10px', textAlign: "center" }} >Amount</TableCell>
+                                            <TableCell style={{ padding: '10px', textAlign: "center" }} >Status</TableCell>
                                         </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
+                                    </TableHead>
+                                    <TableBody>
+                                        {hostOrders.map((order) => (
+
+                                            < TableRow key={order._id}>
+                                                <TableCell component="th" scope="row">{this.reservationTime(order)}</TableCell>
+                                                <TableCell align="left" ><img src={order.stay.picture} /></TableCell>
+                                                <TableCell align="left">{order.stay.name}</TableCell>
+                                                <TableCell align="left">{order.buyer.fullname}</TableCell>
+                                                <TableCell align="left">{order.startDate} - {order.endDate}</TableCell>
+                                                <TableCell align="center">{this.getNights(order)}</TableCell>
+                                                <TableCell align="center">{this.getGuests(order)}</TableCell>
+                                                <TableCell align="center">${order.totalPrice}</TableCell>
+                                                <TableCell align="center">{this.orderStatus(order)}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                        </div>
                     </div>
                 </div>
             </React.Fragment >

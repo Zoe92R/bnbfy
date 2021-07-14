@@ -14,9 +14,7 @@
 @import './general/_hero.scss';
 @import './general/_general-class.scss';
 
-//Header
-@import './cmps/_header.scss';
-@import './cmps/_userMenu.scss';
+
 
 //Page
 @import './pages/_stay-app.scss';
@@ -41,6 +39,11 @@
 @import './cmps/DetailsCmps/_add-review.scss';
 @import './cmps/DetailsCmps/_guest-choose-details.scss';
 
+
+//Header
+@import './cmps/_header.scss';
+@import './cmps/_header-home.scss';
+@import './cmps/_userMenu.scss';
 
 //Footer
 @import './cmps/_footer.scss';

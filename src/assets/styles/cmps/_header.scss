@@ -1,7 +1,8 @@
 .main-header {
-    text-transform: uppercase;
+    // text-transform: uppercase;
     box-shadow: 0 15px 10px -15px rgba(19, 20, 22, 0);
-    position: sticky;
+    // position: sticky;
+    position: fixed;
     top: 0;
     z-index: 1;
     font-family: Cereal-MediumBold;
@@ -12,7 +13,7 @@
     .logo {
         width: fit-content;
         & img {
-            max-width: 110px;
+            width: 80px;
             object-fit: cover;
         }
     }
@@ -71,14 +72,20 @@
     z-index: 4;
     position: sticky;
     top: 0;
+    left: 0;
+    right: 0;
     font-family: Cereal-MediumBold;
     font-size: 14px;
     font-weight: 600;
     background-color: #ffffff;
-    transition: 0.05s;
+    // transition: 0.05s;
     .main-nav {
         a {
             color: #222222;
         }
     }
+}
+
+.no-display{
+    display: none;
 }
