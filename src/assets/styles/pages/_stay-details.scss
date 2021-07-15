@@ -1,5 +1,4 @@
 .stay-details {
-    // overflow-x: hidden; // not sure about it
     padding-top: 24px;
 
     .stay-title,
@@ -8,7 +7,6 @@
     .rate-small,
     .address,
     .dets-by-host {
-        // font-family: Cereal-NormalBold;
         font-family: Cereal-MediumBold;
     }
 
@@ -35,13 +33,6 @@
     }
 
     min-height: 1200px;
-
-    // .booking-modal {
-    //     border: 1px solid rgb(221, 221, 221);
-    //     border-radius: 12px;
-    //     padding: 24px;
-    //     box-shadow: #0000001f 0px 6px 16px;
-    // }
 
     .aments {
         padding: 48px 0;
@@ -76,17 +67,9 @@
     //     position: absolute;
     // }
 
-
-    @media (max-width: $mobile-breakpoint) {
-        .nerrow-footer-booking {
-            display: block;
-            position: fixed;
-            bottom: 0;
-            z-index: 999;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            border-top: 1px solid #ddd;
+    @media (max-width: $narrow-breakpoint) {
+        .booking-modal-details-container {
+            display: none;
         }
     }
 }

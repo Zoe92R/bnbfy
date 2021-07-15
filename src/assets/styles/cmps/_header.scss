@@ -1,7 +1,5 @@
 .main-header {
-    // text-transform: uppercase;
     box-shadow: 0 15px 10px -15px rgba(19, 20, 22, 0);
-    // position: sticky;
     position: fixed;
     top: 0;
     z-index: 1;
@@ -16,17 +14,19 @@
             width: 80px;
             object-fit: cover;
         }
+        @media (max-width: $narrow-breakpoint) {
+            display: none;
+        }
     }
     .main-nav {
-        // width: 30%;
         min-width: 150px;
         a {
             color: white;
             margin-left: 20px;
         }
         @media (max-width: $narrow-breakpoint) {
-            // display: none;
-            min-width: 260px;
+            display: none;
+            // min-width: 260px;
         }
     }
     .user-menu {
