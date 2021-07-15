@@ -55,7 +55,6 @@ export const _AppHeaderHome = (props) => {
     return (
         <header className={`main-home-header main-layout full ${getHeaderClass()}`} >
             <div className="tow-rows flex column">
-
                 <div className="first-row main-header-wrapper flex space-between">
 
                     {/* <div className="logo item"><NavLink exact to="/"><img src={logo} /></NavLink></div> */}
