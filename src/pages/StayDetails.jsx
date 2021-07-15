@@ -27,7 +27,8 @@ export class _StayDetails extends Component {
         user: {
             "_id": "u1021",
             "fullname": "Nisim David",
-        }
+        },
+        isBlackMode: false
     }
 
     async componentDidMount() {
@@ -89,59 +90,69 @@ export class _StayDetails extends Component {
         this.setState({ isReviewAddOpen: !this.state.isReviewAddOpen })
     }
 
+    isBlack = (str) => {
+        if (str) {
+            return `modal-mode ${this.state.isBlackMode}`
+        } else {
+            return `modal-mode ${this.state.isBlackMode}`
+        }
+    }
 
     render() {
         const { currStay } = this.props
         if (!currStay) return <div>Loading...</div>
         return (
-            <div className="stay-details main-container main-layout">
-                <div className="stay-main-details ">
-                    <div className="stay-title">{currStay.name}</div>
-                    <div >
+            <div className={this.isBlack()}>
+                <div className="stay-details main-container main-layout">
+                    <div className="stay-main-details ">
+                        <div className="stay-title">{currStay.name}</div>
+                        <div >
+                            <i className="rate-star fas fa-star"></i>
+                            <span className="rate-small">
+                                <span className="rate-num">{this.getAvgRage()}</span>
+                                <span> ({currStay.reviews.length} reviews) </span>
+                            </span>
+                            <span className="address">{currStay.loc.address}</span>
+                        </div>
+                    </div>
+                    {!this.state.isCurrentHideGallery && <div className="details-gallery grid">
+                        {currStay.imgUrls.map((currStayImg, idx) => <img key={idx} className="stay-img" src={currStayImg} />)}
+                    </div>}
+                    {this.state.isCurrentHideGallery && <ImgCarusel stayId={currStay._id} imgs={currStay.imgUrls} />}
+                    <div className="booking-modal-details-container flex space-between">
+                        <div class-name="stay-details">
+                            <div className="secondary-dets">
+                                <div className="dets-by-host">{`Hosted by ${currStay.host.fullname}`}</div>
+                                <div>{`Up to ${currStay.capacity} Guests`}</div>
+                                {/* <img className="host-img" src={currStay.host.imgUrl} /> */}
+                            </div>
+                            <p>{currStay.summary}</p>
+                            <div className="aments">
+                                <div className="amenities-title">Amenities</div>
+                                <AmentiesList aments={currStay.amenities} />
+                            </div>
+                        </div>
+                        <BookingModal
+                            isBlack={this.isBlack}
+                            currStay={currStay}
+                            trip={this.props.trip}
+                            onReserve={this.onReserve}
+                            avgRate={this.getAvgRage()} />
+                    </div>
+                    <div>
                         <i className="rate-star fas fa-star"></i>
-                        <span className="rate-small">
-                            <span className="rate-num">{this.getAvgRage()}</span>
-                            <span> ({currStay.reviews.length} reviews) </span>
-                        </span>
-                        <span className="address">{currStay.loc.address}</span>
+                        <span className="reviwes-header"> {this.getAvgRage()} ({currStay.reviews.length} reviews)</span>
                     </div>
-                </div>
-                {!this.state.isCurrentHideGallery && <div className="details-gallery grid">
-                    {currStay.imgUrls.map((currStayImg, idx) => <img key={idx} className="stay-img" src={currStayImg} />)}
-                </div>}
-                {this.state.isCurrentHideGallery && <ImgCarusel stayId={currStay._id} imgs={currStay.imgUrls} />}
-                <div className="booking-modal-details-container flex space-between">
-                    <div class-name="stay-details">
-                        <div className="secondary-dets">
-                            <div className="dets-by-host">{`Hosted by ${currStay.host.fullname}`}</div>
-                            <div>{`Up to ${currStay.capacity} Guests`}</div>
-                            {/* <img className="host-img" src={currStay.host.imgUrl} /> */}
-                        </div>
-                        <p>{currStay.summary}</p>
-                        <div className="aments">
-                            <div className="amenities-title">Amenities</div>
-                            <AmentiesList aments={currStay.amenities} />
-                        </div>
+                    <StayReviews reviews={currStay.reviews} isToSeeAll={this.state.isToSeeAll} />
+                    <div className="btns-review flex space-between">
+                        <button className="btn-toggle-review" onClick={() => this.onSeeAll()}>{(!this.state.isToSeeAll) ? 'See all Reviews' : 'hide'}</button>
+                        {!this.state.isReviewAddOpen && <button className="btn-add-review-dets" onClick={() => this.toggleAddReview()}>Add Review</button>}
                     </div>
-                    <BookingModal currStay={currStay}
-                        trip={this.props.trip}
-                        onReserve={this.onReserve}
-                        avgRate={this.getAvgRage()} />
+                    {this.state.isReviewAddOpen && <AddReview currStay={currStay} user={this.state.user} addReview={this.addReview} />}
+                    <GoogleMap loc={currStay.loc} />
+                    {/* <NerrowBookingModal /> */}
                 </div>
-                <div>
-                    <i className="rate-star fas fa-star"></i>
-                    <span className="reviwes-header"> {this.getAvgRage()} ({currStay.reviews.length} reviews)</span>
-                </div>
-                <StayReviews reviews={currStay.reviews} isToSeeAll={this.state.isToSeeAll} />
-                <div className="btns-review flex space-between">
-                    <button className="btn-toggle-review" onClick={() => this.onSeeAll()}>{(!this.state.isToSeeAll) ? 'See all Reviews' : 'hide'}</button>
-                    {!this.state.isReviewAddOpen && <button className="btn-add-review-dets" onClick={() => this.toggleAddReview()}>Add Review</button>}
-                </div>
-                {this.state.isReviewAddOpen && <AddReview currStay={currStay} user={this.state.user} addReview={this.addReview} />}
-                <GoogleMap loc={currStay.loc} />
-                {/* <NerrowBookingModal /> */}
             </div>
-
         )
     }
 }

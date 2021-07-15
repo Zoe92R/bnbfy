@@ -35,6 +35,10 @@ export const Footer = () => {
         console.log('location', location.pathname.includes('details'));
     }, [mobile, location, screenSize, window.innerWidth])
 
+    const isWhite = () => {
+        return screenSize < 460 ? 'white' : ''
+    }
+
     const getAvgRage = () => {
         const avgRate = utilService.calRate(currStay.reviews)
         return avgRate;
@@ -58,23 +62,32 @@ export const Footer = () => {
         await saveOrder(order)
     }
     return (
-        <footer className="main-footer main-layout full">
+        <footer className={`main-footer main-layout full ${isWhite()}`} >
             <p>
                 BnBfy,Inc <i className="far fa-copyright">
                 </i>-All rights reserved
                 <i className="far fa-copyright"></i>
             </p>
-            {mobile && <button onClick={() => setisBookingModal(true)}>
+            {
+                mobile && <div>
 
-                <div className="flex space-between">
-                    <span>price: ${currStay && currStay.price}</span>
-                    <span>Check Aavilability</span>
+                    <div className="flex space-between">
+                        <span>price: ${currStay && currStay.price}</span>
+                        <button onClick={() => setisBookingModal(true)}>
+                            Check Availability
+                        </button>
+                    </div>
                 </div>
-            </button>}
-            {isBookingModal && <BookingModal currStay={currStay}
-                trip={trip}
-                onReserve={onReserve}
-                avgRate={getAvgRage()} />}
-        </footer>
+            }
+            {
+                isBookingModal && <div className="footer-booking-modal flex align-center justify-center">
+                    <BookingModal
+                        currStay={currStay}
+                        trip={trip}
+                        onReserve={onReserve}
+                        avgRate={getAvgRage()} />
+                </div>
+            }
+        </footer >
     )
 }
