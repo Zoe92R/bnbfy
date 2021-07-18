@@ -24,6 +24,9 @@ export class BookingModal extends Component {
     }
 
     componentDidMount() {
+        if (window.innerWidth < 460) {
+            this.props.setIsBlack('black')
+        }
         const { trip } = this.props
         if (trip) {
             if (trip.startDate && trip.startDate) {
@@ -33,6 +36,9 @@ export class BookingModal extends Component {
                 this.setState({ guest: trip.guest })
             }
         }
+    }
+    componentWillUnmount() {
+        this.props.setIsBlack('')
     }
 
     setDate = (startDate, endDate) => {
@@ -72,7 +78,7 @@ export class BookingModal extends Component {
             endDate,
             guest
         }
-        this.setState({isReserved : true})
+        this.setState({ isReserved: true })
         this.props.onReserve(checkInDets)
     }
 
