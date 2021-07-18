@@ -14,11 +14,13 @@ export const Footer = () => {
     const { trip } = useSelector(state => state.tripModule)
     const [mobile, setMobile] = useState(false)
     const [screenSize, setScreenSize] = useState(0)
+    const [blackMode, setisBlackMode] = useState('')
     const [isBookingModal, setisBookingModal] = useState(false)
     const user = {
         "_id": "u1021",
         "fullname": "Nisim David",
     }
+
     useEffect(() => {
         console.log('innerwidth', window.innerWidth);
         setScreenSize(window.innerWidth)
@@ -37,6 +39,19 @@ export const Footer = () => {
 
     const isWhite = () => {
         return screenSize < 460 ? 'white' : ''
+    }
+
+    const isBlack = () => {
+        if (blackMode) {
+            console.log('blackMode', blackMode);
+            return `modal-mode ${blackMode}`
+        } else {
+            return "modal-mode"
+        }
+    }
+
+    const setIsBlack = (str) => {
+        setisBlackMode(str)
     }
 
     const getAvgRage = () => {
@@ -63,31 +78,29 @@ export const Footer = () => {
     }
     return (
         <footer className={`main-footer main-layout full ${isWhite()}`} >
-            <p>
-                BnBfy,Inc <i className="far fa-copyright">
-                </i>-All rights reserved
-                <i className="far fa-copyright"></i>
-            </p>
-            {
-                mobile && <div>
-
+            <div className={isBlack()}>
+                <p>
+                    BnBfy,Inc <i className="far fa-copyright">
+                    </i>-All rights reserved
+                    <i className="far fa-copyright"></i>
+                </p>
+                {mobile && <div>
                     <div className="flex space-between">
                         <span>price: ${currStay && currStay.price}</span>
                         <button onClick={() => setisBookingModal(true)}>
                             Check Availability
                         </button>
                     </div>
-                </div>
-            }
-            {
-                isBookingModal && <div className="footer-booking-modal flex align-center justify-center">
+                </div>}
+                {isBookingModal && <div className="footer-booking-modal flex align-center justify-center">
                     <BookingModal
+                        setIsBlack={setIsBlack}
                         currStay={currStay}
                         trip={trip}
                         onReserve={onReserve}
                         avgRate={getAvgRage()} />
-                </div>
-            }
+                </div>}
+            </div>
         </footer >
     )
 }

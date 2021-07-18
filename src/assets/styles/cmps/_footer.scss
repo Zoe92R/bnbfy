@@ -6,11 +6,13 @@
     font-weight: 500;
     font-size: $fs14;
     bottom: 0;
+    pointer-events: auto;
+    opacity: 1;
     p {
         z-index: 1;
     }
     .footer-booking-modal {
-        position: fixed;
+        // position: fixed;
         bottom: 200px;
         left: 30%;
         background-color: white;
@@ -21,7 +23,7 @@
         padding-bottom: 5px;
     }
     @media (max-width: 900px) {
-        .main-screen {
+        .black {
             position: fixed;
             bottom: 0;
             right: 0;
@@ -30,12 +32,13 @@
             background-color: rgba(0, 0, 0, 0.5);
             cursor: pointer;
             pointer-events: none;
-            opacity: 0;
+            opacity: 1;
+            user-select: none;
             transition: opacity 0.8s;
         }
-        body.menu-open .main-screen {
-            pointer-events: auto;
-            opacity: 1;
-        }
+        // body.menu-open .main-screen {
+        //     pointer-events: auto;
+        //     opacity: 1;
+        // }
     }
 }

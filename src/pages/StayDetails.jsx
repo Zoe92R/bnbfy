@@ -12,8 +12,6 @@ import { BookingModal } from '../cmps/StayDetailsCmps/BookingModal.jsx'
 import { AddReview } from '../cmps/StayDetailsCmps/AddReview.jsx'
 import { utilService } from '../services/utilService.js'
 import { ImgCarusel } from '../cmps/ExploreCmps/ImgCarusel.jsx';
-// import { NerrowBookingModal } from '../cmps/StayDetailsCmps/NerrowBookingModal.jsx';
-
 import { PageLoader } from '../cmps/commonCmps/PageLoader.jsx'
 
 export class _StayDetails extends Component {
@@ -28,7 +26,7 @@ export class _StayDetails extends Component {
             "_id": "u1021",
             "fullname": "Nisim David",
         },
-        isBlackMode: false
+        isBlackMode: ''
     }
 
     async componentDidMount() {
@@ -90,12 +88,12 @@ export class _StayDetails extends Component {
         this.setState({ isReviewAddOpen: !this.state.isReviewAddOpen })
     }
 
-    isBlack = (str) => {
-        if (str) {
-            return `modal-mode ${this.state.isBlackMode}`
-        } else {
-            return `modal-mode ${this.state.isBlackMode}`
-        }
+    isBlack = () => {
+        return `modal-mode ${this.state.isBlackMode}`
+    }
+
+    setIsBlack = (str) => {
+        this.setState({ isBlackMode: str })
     }
 
     render() {
@@ -133,7 +131,7 @@ export class _StayDetails extends Component {
                             </div>
                         </div>
                         <BookingModal
-                            isBlack={this.isBlack}
+                            setIsBlack={this.setIsBlack}
                             currStay={currStay}
                             trip={this.props.trip}
                             onReserve={this.onReserve}
