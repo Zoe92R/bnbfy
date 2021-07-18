@@ -14,9 +14,9 @@
             width: 80px;
             object-fit: cover;
         }
-        @media (max-width: $narrow-breakpoint) {
-            display: none;
-        }
+        // @media (max-width: $narrow-breakpoint) {
+        //     display: none;
+        // }
     }
     .main-nav {
         min-width: 150px;

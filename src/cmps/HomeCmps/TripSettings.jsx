@@ -9,6 +9,7 @@ import { CitySearchModal } from '../HomeCmps/CitySearchModal.jsx'
 import { GuestChoose } from '../HomeCmps/GuestChoose.jsx'
 import { DateRangePicker } from '../commonCmps/DateRangePicker.jsx'
 import { utilService } from '../../services/utilService.js'
+import React from 'react'
 
 export class _TripSettings extends Component {
     state = {
@@ -133,45 +134,39 @@ export class _TripSettings extends Component {
 
     render() {
         const { trip, isGuestChooseOpen, isDatePickerOpen, isLocationChooseOpen } = this.state
-        const guestAmount = utilService.getAmount(trip.guest,'guest', true)
+        const guestAmount = utilService.getAmount(trip.guest, 'guest', true)
         const filterPlaces = this.getAllStays()
         return (
+            <React.Fragment>
             <div className="filter-warper">
                 <button className="filter-warper-input-txt" onClick={() => this.onToggleChoose('location')}>
                     {/* <button className="btn-clear-search" onClick={(e) => this.onClearBtn(e, 'guest-btn')}></button> */}
                     <div className="picker-date-btn-first-line">Location</div>
-                    <input onClick={() => this.onFoucesModal } placeholder="Where are you going?" type="search" list="places" value={trip.countrys} onChange={this.handleChange} autoComplete="off" />
+                    <input onClick={() => this.onFoucesModal} placeholder="Where are you going?" type="search" list="places" value={trip.countrys} onChange={this.handleChange} autoComplete="off" />
                 </button>
                 {isLocationChooseOpen && filterPlaces && <CitySearchModal
                     // guestUpdate={this.guestUpdate}
                     countrys={filterPlaces}
                     onClickTxtModal={this.onClickTxtModal} />}
-                {/* <input autoFocus onClick={() => this.setState({ isGuestChooseOpen: false, isDatePickerOpen: false })} className="filter-warper-input-txt" placeholder="Where are you going?" type="search" list="places" onChange={this.handleChange} autoComplete="off" />
 
-                <datalist id="places">
-                    {filterPlaces.map((place, key) =>
-                        <option key={key} value={place} />
-                    )}
-                </datalist> */}
 
                 <button className="picker-date-btn" onClick={() => this.onToggleChoose('date-picker')}>
                     <div className="picker-date-btn-first-line">Pick a Date</div>
-                    {trip.startDate  && `${moment(trip.startDate).format('LL')}`}
+                    {trip.startDate && `${moment(trip.startDate).format('LL')}`}
                     {!trip.startDate && <div><div className="picker-date-btn-sec-line">Check-in</div> </div>}
                 </button>
 
                 <button className="picker-date-btn" onClick={() => this.onToggleChoose('date-picker')}>
                     <div className="picker-date-btn-first-line">Pick a Date</div>
                     {trip.endDate && `${moment(trip.endDate).format('LL')}`}
-            
-                    {!trip.endDate &&<div><div className="picker-date-btn-sec-line">Check-out</div> </div>}
+
+                    {!trip.endDate && <div><div className="picker-date-btn-sec-line">Check-out</div> </div>}
                 </button>
-                <div className="flex" style={{ position: "absolute", zIndex: 120, fontWight: 400 ,top: "168px", right: "13%" }}>
+                {/* <div className="flex" style={{ position: "absolute", zIndex: 120, fontWight: 400, top: "168px", right: "13%" }}>
                     {isDatePickerOpen && <DateRangePicker style={{ backgroundColor: 'red' }} setDate={this.setDate}
-                        onToggleChoose={this.onToggleChoose} />}</div>
+                        onToggleChoose={this.onToggleChoose} />}</div> */}
 
                 <button className="is-guest-choose" onClick={() => this.onToggleChoose('guest')}>
-                    {/* <button className="btn-clear-search" onClick={(e) => this.onClearBtn(e, 'guest-btn')}></button> */}
                     <div className="picker-date-btn-first-line">Guests</div>
                     {guestAmount ? guestAmount : <div className="picker-date-btn-sec-line">Add guests</div>}
                 </button>
@@ -183,6 +178,10 @@ export class _TripSettings extends Component {
                         <img src={search} alt="" /></button>
                 </Link>
             </div>
+            <div className="flex" style={{ position: "absolute", zIndex: 120, fontWight: 400, top: "168px", right: "13%" }}>
+                    {isDatePickerOpen && <DateRangePicker style={{ backgroundColor: 'red' }} setDate={this.setDate}
+                        onToggleChoose={this.onToggleChoose} />}</div>
+            </React.Fragment>
         )
     }
 
