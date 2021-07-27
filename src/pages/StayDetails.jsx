@@ -69,7 +69,7 @@ export class _StayDetails extends Component {
     }
 
     onReserve = async (tripeDetails) => {
-        let timerInterval
+        // let timerInterval
         Swal.fire({
             title: 'Thank you for your reservation!',
             html: `<div style={{white-space: pre-line; font-family:Cereal-Normal}}>${this.props.currStay.name} in ${this.props.currStay.loc.city} \n \n${moment(tripeDetails.startDate).format('LL')}-${moment(tripeDetails.endDate).format('LL')}\n\n <div>`,
@@ -80,7 +80,7 @@ export class _StayDetails extends Component {
         })
         const { currStay } = this.props
         const order = utilService.createOrder(tripeDetails, this.state.user, currStay)
-        console.log('order in stay details', order);
+        // console.log('order in stay details', order);
         await this.props.saveOrder(order)
     }
 
@@ -98,7 +98,7 @@ export class _StayDetails extends Component {
 
     render() {
         const { currStay } = this.props
-        if (!currStay) return <div>Loading...</div>
+        if (!currStay) return <PageLoader/>
         return (
             <div className={this.isBlack()}>
                 <div className="stay-details main-container main-layout">
@@ -114,7 +114,7 @@ export class _StayDetails extends Component {
                         </div>
                     </div>
                     {!this.state.isCurrentHideGallery && <div className="details-gallery grid">
-                        {currStay.imgUrls.map((currStayImg, idx) => <img key={idx} className="stay-img" src={currStayImg} />)}
+                        {currStay.imgUrls.map((currStayImg, idx) => <img key={idx} className="stay-img" src={currStayImg} alt=""/>)}
                     </div>}
                     {this.state.isCurrentHideGallery && <ImgCarusel stayId={currStay._id} imgs={currStay.imgUrls} />}
                     <div className="booking-modal-details-container flex space-between">

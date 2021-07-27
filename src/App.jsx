@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { routes } from './routes.js'

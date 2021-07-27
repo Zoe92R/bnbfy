@@ -22,8 +22,8 @@ export const httpService = {
         return ajax(endpoint, 'GET',data)
     },
     post(endpoint, data) {
-        console.log('check');
-        console.log('data:', data)
+        // console.log('check');
+        // console.log('data:', data)
         return ajax(endpoint, 'POST', data)
     },
     put(endpoint, data) {
@@ -35,7 +35,7 @@ export const httpService = {
 }
 
 async function ajax(endpoint, method = 'GET', data = null) {
-    console.log('BASE_URL:', BASE_URL)
+    // console.log('BASE_URL:', BASE_URL)
     try {
         const res = await axios({
             url: `${BASE_URL}${endpoint}`,
@@ -46,7 +46,7 @@ async function ajax(endpoint, method = 'GET', data = null) {
         return res.data
     } catch (err) {
         console.log(`Had Issues ${method}ing to the backend, endpoint: ${endpoint}, with data: ${data}`)
-        console.dir(err)
+        // console.dir(err)
         if (err.response && err.response.status === 401) {
             // Depends on routing startegy - hash or history
             window.location.assign('/#/login')

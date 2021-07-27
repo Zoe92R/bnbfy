@@ -7,7 +7,7 @@ export function orderReducer(state = initialState, action) {
         case 'SET_ORDERS':
             return { ...state, orders: action.orders }
         case 'ADD_ORDER':
-            console.log('action.saveOrder in reducer',action.saveOrder);
+            // console.log('action.saveOrder in reducer',action.saveOrder);
             return { ...state, orders: [action.saveOrder, ...state.orders] }
         case 'UPDATE_ORDER':
             return { ...state, orders: [action.saveOrder, ...state.orders.filter(order => action.order._id !== order._id)] }

@@ -11,7 +11,7 @@ import Paper from '@material-ui/core/Paper';
 import moment from "moment"
 // import { Dashboard } from '../cmps/Dashboard.jsx'
 import { orderService } from '../services/orderService.js';
-import { ListItemText } from '@material-ui/core';
+// import { ListItemText } from '@material-ui/core';
 
 
 class _Orders extends Component {
@@ -25,7 +25,7 @@ class _Orders extends Component {
     async componentDidMount() {
         await this.props.loadOrders()
         const hostOrders = await orderService.getOrderByHost('u103')
-        console.log('hostOrders', hostOrders)
+        // console.log('hostOrders', hostOrders)
         const { hostAvatar, hostName } = hostOrders[0]
         this.setState({ hostOrders, hostAvatar, hostName })
         if (!this.props.loggedInUser) this.props.history.push('/login')
@@ -93,7 +93,7 @@ class _Orders extends Component {
 
                         <div className="user-pic flex column ">
                             {/* <Dashboard orders={orders} /> */}
-                            <img src={hostAvatar} />
+                            <img src={hostAvatar} alt=""/>
                             <span className="user-name flex">{hostName}</span>
                         </div>
                         <div className="profile-table flex justify-center align-center">
@@ -118,7 +118,7 @@ class _Orders extends Component {
 
                                             < TableRow key={order._id}>
                                                 <TableCell component="th" scope="row">{this.reservationTime(order)}</TableCell>
-                                                <TableCell align="left" ><img src={order.stay.picture} /></TableCell>
+                                                <TableCell align="left" ><img src={order.stay.picture} alt=""/></TableCell>
                                                 <TableCell align="left">{order.stay.name}</TableCell>
                                                 <TableCell align="left">{order.buyer.fullname}</TableCell>
                                                 <TableCell align="left">{order.startDate} - {order.endDate}</TableCell>

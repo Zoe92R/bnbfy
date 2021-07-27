@@ -1,5 +1,4 @@
 import React, { useState, useEffect, createRef } from 'react';
-// import React, { Component } from 'react'
 import { NavLink, withRouter } from 'react-router-dom'
 import { UserMenu } from './UserMenu.jsx'
 import { TripSettings } from './HomeCmps/TripSettings'
@@ -32,10 +31,14 @@ export const _AppHeader = (props) => {
     return (
         <header className={`main-header main-layout full ${getHeaderClass()}`} >
             <div className="main-header-wrapper flex space-between">
-                <div className="logo"><NavLink exact to="/"><img src={logo} /></NavLink></div>
+                <div className="logo">
+                    <NavLink exact to="/"><img src={logo} />
+                    </NavLink>
+                </div>
                 <nav className="main-nav flex align-center space-between">
                     <NavLink exact to="/stay" className="clean-list"> Explore </NavLink>
-                    {!props.loggedInUser && <NavLink exact to="/" className="clean-list"> Become a Host </NavLink>}
+                    {!props.loggedInUser &&
+                        <NavLink exact to="/" className="clean-list"> Become a Host </NavLink>}
                     <div className="user-menu flex align-center">
                         <img className="hamburger-header" onClick={toggleProfile} src={hamburger} />
                         {isUserAvatar()}

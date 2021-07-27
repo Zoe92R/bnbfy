@@ -20,7 +20,8 @@ class _LoginSignup extends Component {
       username: '',
       password: '',
       fullname: ''
-    }
+    },
+    isSignUp: false
   }
 
   componentDidMount() {
@@ -76,65 +77,79 @@ class _LoginSignup extends Component {
   removeUser = userId => {
     this.props.removeUser(userId)
   }
+  toggleisSignUp = () => {
+    this.setState({ isSignUp: !this.state.isSignUp })
+  }
   render() {
     const { loggedInUser } = this.props
+    const { isSignUp } = this.state
     return (
-      <div className="login">
-        <h1>
-          Login / Signup
-        </h1>
-        <p>{this.state.msg}</p>
-        {loggedInUser && <div>
-          <h3>
-            Welcome {loggedInUser.fullname}
-            <button onClick={this.props.logout}>Logout</button>
-          </h3>
-        </div>
-        }
-        {!loggedInUser && <div className="login-select"><form className="frm" onSubmit={this.doLogin}>
-          <h2>Login</h2>
-          <select
-            name="username"
-            value={this.state.loginCred.username}
-            onChange={this.loginHandleChange}
-          >
-            <option value="">Select User</option>
-            {this.props.users && this.props.users.map(user => {
-              return <option key={user._id} value={user.username}>{user.fullname}</option>})}
-          </select>
-          <button>Login</button>
-        </form></div>}
-        {!loggedInUser && <div className="signup flex justify-center"><form className="frm flex column" onSubmit={this.doSignup}>
-          <h2>Signup</h2>
-          <input
-            type="text"
-            name="fullname"
-            value={this.state.signupCred.fullname}
-            onChange={this.signupHandleChange}
-            placeholder="Full name"
-            autoComplete="fullname"
-          />
-          <input
-            name="password"
-            type="password"
-            value={this.state.signupCred.password}
-            onChange={this.signupHandleChange}
-            placeholder="Password"
-            autoComplete="current-password"
-          />
-          <input
-            type="text"
-            name="username"
-            value={this.state.signupCred.username}
-            onChange={this.signupHandleChange}
-            placeholder="Username"
-            autoComplete="username"
-          />
-          <br />
-          <button>Signup</button>
-        </form></div>}
+      <div className="login main-layout">
+        <div className="login-signup-section flex column align-center">
+          <h1>
+            {isSignUp ? 'Signup' : 'Login'}
+          </h1>
+          <p>{this.state.msg}</p>
+          {loggedInUser && <div>
+            <h3>
+              Welcome {loggedInUser.fullname}
+              <button onClick={this.props.logout}>Logout</button>
+            </h3>
+          </div>
+          }
+          <button className="btn-login-signup" onClick={() => this.toggleisSignUp()}>
+            {!isSignUp ? 'Click me for Signup' : 'Back to Login ?'}
+          </button>
+          {!loggedInUser && !isSignUp && <div className="login-select">
+            <form className="frm flex column" onSubmit={this.doLogin}>
+              {/* <h2>Login</h2> */}
+              <select
+                name="username"
+                value={this.state.loginCred.username}
+                onChange={this.loginHandleChange}
+              >
+                <option value="">Select User</option>
+                {this.props.users && this.props.users.map(user => {
+                  return <option key={user._id} value={user.username}>{user.fullname}</option>
+                })}
+              </select>
+              <br />
+              <button>Login</button>
+            </form></div>}
+          {/* {!isSignUp && <button onClick={() => this.toggleisSignUp()}>Signup</button>} */}
+          {/* <button onClick={() => this.toggleisSignUp()}>{!isSignUp ? 'Signup' : 'Login'}</button> */}
+          {!loggedInUser && isSignUp && <div className="signup flex justify-center">
+            <form className="frm flex column justify-center" onSubmit={this.doSignup}>
+              {/* <h2>Signup</h2> */}
+              <input
+                type="text"
+                name="fullname"
+                value={this.state.signupCred.fullname}
+                onChange={this.signupHandleChange}
+                placeholder="Full name"
+                autoComplete="fullname"
+              />
+              <input
+                name="password"
+                type="password"
+                value={this.state.signupCred.password}
+                onChange={this.signupHandleChange}
+                placeholder="Password"
+                autoComplete="current-password"
+              />
+              <input
+                type="text"
+                name="username"
+                value={this.state.signupCred.username}
+                onChange={this.signupHandleChange}
+                placeholder="Username"
+                autoComplete="username"
+              />
+              <br />
+              <button>Signup</button>
+            </form></div>}
 
-        {/* <section className="admin">
+          {/* <section className="admin">
           <details>
             <summary>Admin</summary>
             <button onClick={this.props.loadUsers}>Refresh Users</button>
@@ -156,6 +171,7 @@ class _LoginSignup extends Component {
             </ul>}
           </details>
         </section> */}
+        </div>
       </div>
     )
   }

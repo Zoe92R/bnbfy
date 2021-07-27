@@ -4,7 +4,7 @@ import { utilService } from '../../services/utilService.js'
 import { ImgCarusel } from './ImgCarusel.jsx'
 import { PageLoader } from '../commonCmps/PageLoader'
 
-
+// export const StayPreview = ({stay}) => {
 export function StayPreview({ stay }) {
     const reviewLength = utilService.getAmount(stay.reviews.length, 'review')
     if (Object.keys(stay).length === 0) return <PageLoader />
@@ -36,7 +36,7 @@ export function StayPreview({ stay }) {
 
 
 // export function StayPreview({ stay }) {
-//     // console.log('stay:', stay)
+//     console.log('stay:', stay)
 //     const reviewLength = utilService.getAmount(stay.reviews.length, 'review')
 //     return (
 //         <NavLink to={`/stay/details/${stay._id}`} className="clean-list" >

@@ -1,12 +1,22 @@
 .login{
-    height: 100vh;
-    text-align: center;
+    height: 66vh;
+    // text-align: center;
+    .btn-login-signup{
+        max-width: 200px;
+        align-self: flex-start;
+        border: 1px solid gray;
+        border-radius: 10px;
+        background-color: whitesmoke;
+        &:hover{
+            background-color: lightgray;
+        }
+    }
 }
 
 .login-select{
     margin-bottom: 20px;
     button{
-        background-color:lightblue;
+        background-color:lightgreen;
         border: none;
         border-radius: 10px;
         margin-left: 10px;
@@ -27,7 +37,7 @@
         background-color:lightgreen;
         border: none;
         border-radius: 10px;
-        margin-left: 10px;
+        // margin-left: 10px;
         color: rgb(27, 23, 23);
     }
 }

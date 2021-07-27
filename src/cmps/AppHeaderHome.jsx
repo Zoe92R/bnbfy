@@ -18,7 +18,7 @@ export const _AppHeaderHome = (props) => {
     useEffect(() => {
         window.addEventListener('scroll', onScroll)
         return () => {
-            console.log('removed')
+            // console.log('removed')
             window.removeEventListener('scroll', onScroll)
         }
     });
@@ -48,7 +48,7 @@ export const _AppHeaderHome = (props) => {
     }
 
     const renderFilter = () => {
-        console.log('clicked for render trip setting');
+        // console.log('clicked for render trip setting');
         setIsFullFilter(true)
     }
 
@@ -59,16 +59,18 @@ export const _AppHeaderHome = (props) => {
 
                     {/* <div className="logo item"><NavLink exact to="/"><img src={logo} /></NavLink></div> */}
                     <NavLink className="logo item" exact to="/"><img src={logo} /></NavLink>
-                    {isScrol && !isFullFilter && <div className="top-filter item flex align-center space-between">
-                        <button className="start-search flex space-between" onClick={renderFilter}>
-                            <div className="text">Start Your Search</div>
-                            <div className="search-btn flex">
-                                <img src={search} alt="" /></div>
-                        </button>
-                    </div>}
+                    {isScrol && !isFullFilter &&
+                        <div className="top-filter item flex align-center space-between">
+                            <button className="start-search flex space-between" onClick={renderFilter}>
+                                <div className="text">Start Your Search</div>
+                                <div className="search-btn flex">
+                                    <img src={search} alt="" /></div>
+                            </button>
+                        </div>}
                     <nav className="main-nav item flex align-center space-between">
                         <NavLink exact to="/stay" className="clean-list"> Explore </NavLink>
-                        {!props.loggedInUser && <NavLink exact to="/" className="clean-list"> Become a Host </NavLink>}
+                        {!props.loggedInUser &&
+                            <NavLink exact to="/" className="clean-list"> Become a Host </NavLink>}
 
                         <div className="user-menu flex align-center">
                             <img className="hamburger-header" onClick={toggleProfile} src={hamburger} />
@@ -85,11 +87,11 @@ export const _AppHeaderHome = (props) => {
 
                 {isScrol && isFullFilter &&
                     // <div className="bgc-header-trip">
-                        <div className="trip-filter for-header second-row">
-                            <TripSettings />
-                        </div>
+                    <div className="trip-filter for-header second-row">
+                        <TripSettings />
+                    </div>
                     // </div>
-                    }
+                }
             </div>
         </header >
     )
