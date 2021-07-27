@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
 import { useLocation } from 'react-router-dom'
 import { saveOrder } from "../store/actions/orderActions"
+import { NavLink, withRouter } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import moment from "moment"
 import { utilService } from "../services/utilService"
@@ -33,6 +34,11 @@ export const Footer = () => {
             setScreenSize(window.innerWidth)
             screenSize < 460 ? setMobile(true) : setMobile(false)
         } else {
+            setisBookingModal(false)
+            setMobile(false)
+        }
+        return () => {
+            console.log('cleanup booking modal');
             setisBookingModal(false)
             setMobile(false)
         }
@@ -88,11 +94,6 @@ export const Footer = () => {
     return (
         <footer className={`main-footer main-layout full ${isWhite()}`} >
             <div className={isBlackClass()} >
-                <p>
-                    BnBfy,Inc <i className="far fa-copyright">
-                    </i>-All rights reserved
-                    <i className="far fa-copyright"></i>
-                </p>
                 {mobile && <div>
                     {console.log(mobile)}
                     <div className="flex space-between">
@@ -110,6 +111,14 @@ export const Footer = () => {
                         onReserve={onReserve}
                         avgRate={getAvgRage()} />
                 </div>}
+                {/* {!isBookingModal && mobile && <div className="">
+                 <NavLink exact to="/stay" className="clean-list"> Explore </NavLink>
+                </div>} */}
+                <p>
+                    BnBfy,Inc <i className="far fa-copyright">
+                    </i>-All rights reserved
+                    <i className="far fa-copyright"></i>
+                </p>
             </div>
         </footer >
     )
