@@ -26,9 +26,8 @@
         border-bottom-right-radius: 15px;
     }
 
-    // @mixin for-mobile-layout {
-    //     // @media (max-width: $mobile-breakpoint) {
-    //     //     @content;
-    //     // }
-    // }
+        @media (max-width: $narrow-breakpoint) {
+            display: none;
+        }
+
 }

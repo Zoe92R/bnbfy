@@ -26,7 +26,7 @@ class _App extends Component {
 function mapStateToProps(state) {
   return {
     stays: state.stayModule.stays,
-    loggedInUser: state.userModule.loggedInUser
+    loggedInUser: state.userModule.loggedInUser,
   }
 }
 

@@ -14,8 +14,10 @@ export const _AppHeaderHome = (props) => {
     const [userProfileToggle, setUserProfileToggle] = useState(false)
     const [isScrol, setIsScrol] = useState(false)
     const [isFullFilter, setIsFullFilter] = useState(false)
+    const [isNarrow, setIsNarrow] = useState(false)
 
     useEffect(() => {
+        if (window.innerWidth < 720) setIsNarrow(true)
         window.addEventListener('scroll', onScroll)
         return () => {
             // console.log('removed')
@@ -28,22 +30,22 @@ export const _AppHeaderHome = (props) => {
     }
     const onScroll = () => {
         const pageYOffset = window.pageYOffset
-        if (pageYOffset > 40) {
+        if (pageYOffset > 80) {
             setIsScrol(true)
         } else {
             setIsScrol(false)
         }
     }
 
-    const getHeaderClass = () => {
+    const getHeaderClass = () => {          
         return (props.location.pathname !== "/" || isScrol) ? "white" : ""
     }
 
     const isUserAvatar = () => {
         if (props.loggedInUser) {
-            return <img className="avatar-home-user" onClick={() => toggleProfile()} src={props.loggedInUser.imgUrl} />
+            return <img className="avatar-home-user" onClick={() => toggleProfile()} src={props.loggedInUser.imgUrl} alt="" />
         } else {
-            return <img className="avatar-home" onClick={() => toggleProfile()} src={emptyAvatar} />
+            return <img className="avatar-home" onClick={() => toggleProfile()} src={emptyAvatar} alt="" />
         }
     }
 
@@ -57,23 +59,22 @@ export const _AppHeaderHome = (props) => {
             <div className="tow-rows flex column">
                 <div className="first-row main-header-wrapper flex space-between">
 
-                    {/* <div className="logo item"><NavLink exact to="/"><img src={logo} /></NavLink></div> */}
-                    <NavLink className="logo item" exact to="/"><img src={logo} /></NavLink>
-                    {isScrol && !isFullFilter &&
-                        <div className="top-filter item flex align-center space-between">
-                            <button className="start-search flex space-between" onClick={renderFilter}>
-                                <div className="text">Start Your Search</div>
-                                <div className="search-btn flex">
-                                    <img src={search} alt="" /></div>
-                            </button>
-                        </div>}
+                    <NavLink className="logo item" exact to="/"><img src={logo} alt="" /></NavLink>
+                    {isScrol && !isFullFilter && !isNarrow && <div className="top-filter item flex align-center space-between">
+                        <button className="start-search flex space-between" onClick={renderFilter}>
+                            <div className="text">Start Your Search</div>
+                            <div className="search-btn flex">
+                                <img src={search} alt="" /></div>
+                        </button>
+                    </div>}
+                    {/* {isScrol && isMobile && } */}
                     <nav className="main-nav item flex align-center space-between">
                         <NavLink exact to="/stay" className="clean-list"> Explore </NavLink>
                         {!props.loggedInUser &&
                             <NavLink exact to="/" className="clean-list"> Become a Host </NavLink>}
 
                         <div className="user-menu flex align-center">
-                            <img className="hamburger-header" onClick={toggleProfile} src={hamburger} />
+                            <img className="hamburger-header" onClick={toggleProfile} src={hamburger} alt="" />
                             {isUserAvatar()}
                             {userProfileToggle && <UserMenu
                                 loggedInUser={props.loggedInUser}
@@ -85,12 +86,10 @@ export const _AppHeaderHome = (props) => {
                 </div>
 
 
-                {isScrol && isFullFilter &&
-                    // <div className="bgc-header-trip">
+                {isScrol && (isFullFilter || isNarrow) &&
                     <div className="trip-filter for-header second-row">
                         <TripSettings />
                     </div>
-                    // </div>
                 }
             </div>
         </header >

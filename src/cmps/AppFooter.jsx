@@ -29,6 +29,7 @@ export const Footer = () => {
 
     useEffect(() => {
         if (location.pathname.includes('details')) {
+            console.log('mobile')
             setScreenSize(window.innerWidth)
             screenSize < 460 ? setMobile(true) : setMobile(false)
         } else {
@@ -93,6 +94,7 @@ export const Footer = () => {
                     <i className="far fa-copyright"></i>
                 </p>
                 {mobile && <div>
+                    {console.log(mobile)}
                     <div className="flex space-between">
                         <span>price: ${currStay && currStay.price}</span>
                         <button className={`${reserved?'reserved':'btn-grad'}`} onClick={() => setisBookingModal(!isBookingModal)}>

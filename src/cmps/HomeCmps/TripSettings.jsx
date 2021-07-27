@@ -26,7 +26,8 @@ export class _TripSettings extends Component {
         },
         isDatePickerOpen: false,
         isGuestChooseOpen: false,
-        isLocationChooseOpen: false
+        isLocationChooseOpen: false,
+        mobile: false
 
     }
     async componentDidMount() {
@@ -132,6 +133,7 @@ export class _TripSettings extends Component {
                 endDate
             }
         }))
+        if (startDate && endDate) this.onToggleChoose('guest')
     }
     onFoucesModal = () => {
         this.setState({
@@ -188,31 +190,24 @@ export class _TripSettings extends Component {
                     {isDatePickerOpen && <DateRangePicker style={{ backgroundColor: 'red' }} setDate={this.setDate}
                         onToggleChoose={this.onToggleChoose} />}</div> */}
 
-                    <button className="is-guest-choose"
-                        onClick={() => this.onToggleChoose('guest')}>
-                        <div className="picker-date-btn-first-line">Guests</div>
-                        {guestAmount ? guestAmount
-                            : <div className="picker-date-btn-sec-line">Add guests</div>}
-                    </button>
-                    {isGuestChooseOpen && <GuestChoose
-                        guestUpdate={this.guestUpdate}
-                        guest={trip.guest} />}
-                    <Link className="search-warrper flex flex-end align-center"
-                        to={`/stay/${this.state.trip.countrys.split(',')[0]}`}>
-                        <button className="search-btn flex justify-center"
-                            onClick={() => this.props.updateTrip(trip)}>
-                            <img src={search} alt="" />
-                        </button>
-                    </Link>
-                </div>
-                <div className="flex"
-                    style={{
-                        position: "absolute", zIndex: 120,
-                        fontWight: 400, top: "168px", right: "13%"
-                    }}>
-                    {isDatePickerOpen && <DateRangePicker style={{ backgroundColor: 'red' }}
-                        setDate={this.setDate}
-                        onToggleChoose={this.onToggleChoose} />}</div>
+                <button className="is-guest-choose" onClick={() => this.onToggleChoose('guest')}>
+                    <div className="picker-date-btn-first-line">Guests</div>
+                    {guestAmount ? guestAmount : <div className="picker-date-btn-sec-line">Add guests</div>}
+                </button>
+                {isGuestChooseOpen && <GuestChoose
+                    guestUpdate={this.guestUpdate}
+                    guest={trip.guest} />}
+                <Link className="search-warrper flex flex-end align-center" to={`/stay/location/${this.state.trip.countrys.split(',')[0]}`}>
+                    <button className="search-btn flex justify-center" onClick={() => this.props.updateTrip(trip)}>
+                        <img src={search} alt="" /></button>
+                </Link>
+            </div>
+            <div className="flex justify-center">
+            {/* <div className="flex" style={{ position: "absolute", zIndex: 120, fontWight: 400, top: "168px", right: "13%" }}> */}
+                    {isDatePickerOpen && <DateRangePicker style={{ backgroundColor: 'red' }} setDate={this.setDate}
+                        onToggleChoose={this.onToggleChoose} mobile={this.props.mobile}/>}</div>
+                    {/* {isDatePickerOpen && <DateRangePicker style={{ backgroundColor: 'red' }} setDate={this.setDate}
+                        onToggleChoose={this.onToggleChoose} mobile={false}/>}</div> */}
             </React.Fragment>
         )
     }

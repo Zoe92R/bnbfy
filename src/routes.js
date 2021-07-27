@@ -16,7 +16,7 @@ export const routes = [
         component: StayDetails
     },
     {
-        path:'/stay/:city',
+        path:'/stay/location/:city',
         component: StayApp
     },
     {

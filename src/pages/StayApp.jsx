@@ -4,6 +4,7 @@ import { utilService } from '../services/utilService'
 import { StayList } from '../cmps/ExploreCmps/StayList.jsx'
 import { StayFilter } from '../cmps/ExploreCmps/StayFilter.jsx'
 import { loadStays } from '../store/actions/stayActions.js'
+import { updateTrip } from '../store/actions/tripActions.js'
 import { PageLoader } from '../cmps/commonCmps/PageLoader.jsx'
 import moment from "moment"
 
@@ -17,6 +18,11 @@ export class _StayApp extends Component {
         const city = this.props.match.params.city
         if (city) {
             this.setState({ filteredStays: this.getFilterStays(city) })
+            // update trip location fron the real url
+            // if (!this.props.trip) {
+
+            //     updateTrip(trip)
+            // }
         } else {
             this.setState({ filteredStays: this.props.stays })
         }
@@ -75,7 +81,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    // loadStay,
+    updateTrip,
     loadStays
 
 }
