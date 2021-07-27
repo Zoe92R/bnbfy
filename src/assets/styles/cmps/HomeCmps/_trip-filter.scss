@@ -162,6 +162,7 @@
 
     @media only screen and (max-width: 720px) {
         min-width: 100%;
+        top: 65px;
     }
 }
 
@@ -273,6 +274,7 @@ input[type="search"]::-webkit-search-cancel-button,
     min-width: 38%;
     @media only screen and (max-width: 720px) {
         min-width: 100%;
+        top: 65px;
     }
     &-svg {
         margin-right: 10px;
