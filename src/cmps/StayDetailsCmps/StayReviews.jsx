@@ -14,7 +14,7 @@ export function StayReviews({ reviews, isToSeeAll }) {
                         <div className="user-info flex space-between">
                             <div>
                                 <div className="flex">
-                                    <img className="user-img flex" src={`https://res.cloudinary.com/daqn5x9jq/image/upload/v1622931073/image%20airbnb/${review.by._id}.jpg`} />
+                                    <img className="user-img flex" src={`https://res.cloudinary.com/daqn5x9jq/image/upload/v1622931073/image%20airbnb/${review.by._id}.jpg`} alt=""/>
                                     <div>
                                         <div className="user-name">{review.by.fullname}</div>
                                         <div className="date">{moment(review.createdAt).format('MMMM YYYY')}</div>

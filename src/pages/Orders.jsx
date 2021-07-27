@@ -93,7 +93,7 @@ class _Orders extends Component {
 
                         <div className="user-pic flex column ">
                             {/* <Dashboard orders={orders} /> */}
-                            <img src={hostAvatar} />
+                            <img src={hostAvatar} alt=""/>
                             <span className="user-name flex">{hostName}</span>
                         </div>
                         <div className="profile-table flex justify-center align-center">
@@ -118,7 +118,7 @@ class _Orders extends Component {
 
                                             < TableRow key={order._id}>
                                                 <TableCell component="th" scope="row">{this.reservationTime(order)}</TableCell>
-                                                <TableCell align="left" ><img src={order.stay.picture} /></TableCell>
+                                                <TableCell align="left" ><img src={order.stay.picture} alt=""/></TableCell>
                                                 <TableCell align="left">{order.stay.name}</TableCell>
                                                 <TableCell align="left">{order.buyer.fullname}</TableCell>
                                                 <TableCell align="left">{order.startDate} - {order.endDate}</TableCell>

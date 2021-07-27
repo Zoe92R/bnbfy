@@ -20,7 +20,6 @@ export class _StayDetails extends Component {
         isToSeeAll: false,
         isReviewAddOpen: false,
         modalOpen: false,
-        // isHideGallery: false,
         isCurrentHideGallery: false,
         user: {
             "_id": "u1021",
@@ -33,23 +32,9 @@ export class _StayDetails extends Component {
         const id = this.props.match.params.stayId
         await this.props.loadStay(id)
         await this.props.loadOrders()
-        window.addEventListener("resize", this.resize.bind(this));
-        this.resize();
-        // console.log('window.innerWidth', window.innerWidth)
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("resize", this.resize.bind(this));
     }
 
 
-    resize() {
-        let isHideGallery = (window.innerWidth <= 460);
-        // console.log(isHideGallery)
-        if (this.state.isCurrentHideGallery !== this.state.isHideGallery) {
-            this.setState({ isCurrentHideGallery: isHideGallery });
-        }
-    }
 
     onSeeAll = () => {
         this.setState({ isToSeeAll: !this.state.isToSeeAll })
@@ -58,7 +43,6 @@ export class _StayDetails extends Component {
         const copyStay = { ...this.props.currStay }
         copyStay.reviews.unshift(review)
         await this.props.saveStay(copyStay)
-        // this.setState({ isToSeeAll: false })
         this.setState({ isReviewAddOpen: false })
     }
 
@@ -69,7 +53,6 @@ export class _StayDetails extends Component {
     }
 
     onReserve = async (tripeDetails) => {
-        let timerInterval
         Swal.fire({
             title: 'Thank you for your reservation!',
             html: `<div style={{white-space: pre-line; font-family:Cereal-Normal}}>${this.props.currStay.name} in ${this.props.currStay.loc.city} \n \n${moment(tripeDetails.startDate).format('LL')}-${moment(tripeDetails.endDate).format('LL')}\n\n <div>`,
@@ -80,7 +63,6 @@ export class _StayDetails extends Component {
         })
         const { currStay } = this.props
         const order = utilService.createOrder(tripeDetails, this.state.user, currStay)
-        console.log('order in stay details', order);
         await this.props.saveOrder(order)
     }
 
@@ -98,7 +80,7 @@ export class _StayDetails extends Component {
 
     render() {
         const { currStay } = this.props
-        if (!currStay) return <div>Loading...</div>
+        if (!currStay) return <PageLoader/>
         return (
             <div className={this.isBlack()}>
                 <div className="stay-details main-container main-layout">
@@ -113,10 +95,10 @@ export class _StayDetails extends Component {
                             <span className="address">{currStay.loc.address}</span>
                         </div>
                     </div>
-                    {!this.state.isCurrentHideGallery && <div className="details-gallery grid">
-                        {currStay.imgUrls.map((currStayImg, idx) => <img key={idx} className="stay-img" src={currStayImg} />)}
-                    </div>}
-                    {this.state.isCurrentHideGallery && <ImgCarusel stayId={currStay._id} imgs={currStay.imgUrls} />}
+                    <div className="details-gallery grid">
+                        {currStay.imgUrls.map((currStayImg, idx) => <img key={idx} className="stay-img" src={currStayImg} alt="" />)}
+                    </div>
+                    <div className="img-carusel-details"><ImgCarusel  stayId={currStay._id} imgs={currStay.imgUrls} /></div>
                     <div className="booking-modal-details-container flex space-between">
                         <div class-name="stay-details">
                             <div className="secondary-dets">
@@ -148,7 +130,6 @@ export class _StayDetails extends Component {
                     </div>
                     {this.state.isReviewAddOpen && <AddReview currStay={currStay} user={this.state.user} addReview={this.addReview} />}
                     <GoogleMap loc={currStay.loc} />
-                    {/* <NerrowBookingModal /> */}
                 </div>
             </div>
         )

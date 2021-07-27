@@ -9,7 +9,13 @@
     font-size: 14px;
     font-weight: 600;
 
+    // @media (min-width: $mobile-breakpoint){
+    //     position: sticky;
+    //     top:0;
+    // }
+
     @media (max-width: $narrow-breakpoint) {
+
         .first-row {
             justify-content: center;
         }
@@ -17,9 +23,11 @@
 
     .trip-filter {
         &.for-header {
-            position: static;
-            margin-top: 6px;
-            margin-bottom: 6px;
+            // position: static;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            // position: sticky;
+            // top: 0;
         }
     }
 
@@ -34,7 +42,6 @@
         }
     }
     .main-nav {
-        // width: 30%;
         min-width: 150px;
         a {
             color: white;
@@ -87,13 +94,10 @@
         z-index: 200;
         position: fixed;
         top: 0;
-        // left: 0;
-        // right: 0;
         font-family: Cereal-MediumBold;
         font-size: 14px;
         font-weight: 600;
         background-color: #ffffff;
-        // transition: 0.05s;
 
         @media (min-width: $normal-breakpoint) {
             .item {
@@ -104,15 +108,26 @@
             }
         }
 
+        // @media (min-width: $narrow-breakpoint) {
+        //     background-color: none;
+        // }
+
         .top-filter {
             justify-content: center;
+            padding-top: 16px;
+            padding-bottom: 16px;
+
+            @media (min-width: $narrow-breakpoint) {
+                padding: 0;
+            }
+
             .start-search {
                 background-color: transparent;
                 border: 1px solid #dddddd;
                 border-radius: 40px;
                 color: #222222;
                 box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 4px 12px rgba(0, 0, 0, 0.05);
-                width: 300px;
+                width: 280px;
                 padding-left: 8px;
                 text-align: left;
                 height: 48px;
@@ -128,10 +143,6 @@
                     width: 32px;
                     height: 32px;
                 }
-
-                // div{
-                //     flex: 1 1 auto;
-                // }
             }
         }
 

@@ -67,9 +67,16 @@
     //     position: absolute;
     // }
 
+    .img-carusel-details {
+        display: none;
+    }
+
     @media (max-width: $narrow-breakpoint) {
         .booking-modal-details-container {
             display: none;
+        }
+        .img-carusel-details {
+            display: block;
         }
     }
 }

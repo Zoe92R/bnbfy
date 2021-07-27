@@ -25,6 +25,7 @@ export class DateRangePicker extends Component {
     }
 
     render() {
+        console.log(this.props.mobile,'mobile');
         const { startDate, endDate } = this.state;
         return (
             <div>
@@ -38,12 +39,16 @@ export class DateRangePicker extends Component {
                     selectsRange={true}
                     minDate={new Date()}
                     monthsShown={2}
-                    inline
+                    inline={true}
+                    shouldCloseOnSelect={true}
                 />
             </div>
         )
     }
 }
+
+//test
+
 //     const [startDate, setStartDate] = useState(new Date("2014/02/08"));
 //     const [endDate, setEndDate] = useState(new Date("2014/02/10"));
 //     return (

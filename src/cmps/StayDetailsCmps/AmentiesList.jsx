@@ -7,6 +7,7 @@ import Gym from '../../assets/svg/amenties/Gym.svg';
 import Smoking from '../../assets/svg/amenties/smoking.svg';
 import Hot_tub from '../../assets/svg/amenties/hot_tub.svg';
 import Air_conditining from '../../assets/svg/amenties/Air_conditioning.svg';
+
 // import Cooking_basics from '../../assets/svg/amenties/Cooking_basics.svg';
 
 export function AmentiesList({ aments }) {
@@ -48,9 +49,9 @@ export function AmentiesList({ aments }) {
                 currImg = getAmenityImg(amenity)
                 if (!currImg) return
                 return (
-                    <div key={amenity} className="flex"><img key={amenity} className="amenty-icon" src={currImg} alt="" key={idx} />
+                    <div key={amenity+idx} className="flex"><img key={amenity} className="amenty-icon" src={currImg} alt="" />
                     
-                        <li key={amenity} className="clean-list">{amenity}</li> </div>
+                        <li key={idx+amenity} className="clean-list">{amenity}</li> </div>
                 )
             })
             }

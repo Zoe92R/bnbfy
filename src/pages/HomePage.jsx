@@ -44,17 +44,24 @@ class _HomePage extends Component {
     }
 
     async componentDidMount() {
-        window.addEventListener('scroll', this.onScroll)
+        console.log(' home page did mount');
+        // window.scroll(0, 0);
+            window.addEventListener('scroll', this.onScroll, false)
         await this.props.loadStays()
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.onScroll)
+        window.removeEventListener('scroll', this.onScroll, false)
     }
 
     onScroll = () => {
+        // if (window.innerWidth <= 460) {
+        //     // console.log('mobile inner width')
+        //     this.setState({ isScroll: true })
+        //     return
+        // }
         const pageYOffset = window.pageYOffset
-        if (pageYOffset > 0) {
+        if (pageYOffset > 80) {
             this.setState({ isScroll: true })
         } else {
             this.setState({ isScroll: false })
@@ -70,11 +77,10 @@ class _HomePage extends Component {
                 <AppHeaderHome logout={logout} loggedInUser={loggedInUser} />
                 <React.Fragment>
                     <div className="hero-sector main-layout grid full">
-                        {!this.state.isScroll && <div className="trip-filter">
-                        {/* {!this.state.isScroll && <div className="trip-filter main-layout"> */}
-                            <TripSettings />
-                        </div>}
-                        <div className="hero-text-wrapper">
+                        <div className="nerrow-hero flex">
+                            {!this.state.isScroll && <div className="trip-filter">
+                                <TripSettings />
+                            </div>}
                             <div className="hero-text">Come, stay and enjoy your day
                                 <span>.</span>
                             </div>
@@ -83,7 +89,6 @@ class _HomePage extends Component {
                     <div className="main-homepage-wrapper">
                         <h2 className="popular-places-headline" >Popular Places</h2>
                         <PopularPlaces popularLoc={this.state.popular} />
-                        {/* </div> */}
                         <div className="see-all flex flex-end">
                             <Link className="see-all clean-list" to='/stay'>See All</Link>
                         </div>

@@ -23,7 +23,7 @@ export class AddReview extends Component {
 
         // console.log('hendle change in add review')
         const field = ev.target.name
-        if(field == 'rate') ev.target.type = 'number'
+        if(field === 'rate') ev.target.type = 'number'
         const value = ev.target.type === 'number' ? +ev.target.value : ev.target.value
         this.setState(prevState => ({
             review: {

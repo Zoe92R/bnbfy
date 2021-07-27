@@ -4,6 +4,7 @@ import { utilService } from '../services/utilService'
 import { StayList } from '../cmps/ExploreCmps/StayList.jsx'
 import { StayFilter } from '../cmps/ExploreCmps/StayFilter.jsx'
 import { loadStay, loadStays } from '../store/actions/stayActions.js'
+import { updateTrip } from '../store/actions/tripActions.js'
 import { PageLoader } from '../cmps/commonCmps/PageLoader.jsx'
 import moment from "moment"
 
@@ -17,6 +18,11 @@ export class _StayApp extends Component {
         const city = this.props.match.params.city
         if (city) {
             this.setState({ filteredStays: this.getFilterStays(city) })
+            // update trip location fron the real url
+            // if (!this.props.trip) {
+
+            //     updateTrip(trip)
+            // }
         } else {
             this.setState({ filteredStays: this.props.stays })
         }
@@ -39,7 +45,7 @@ export class _StayApp extends Component {
     render() {
         const { stays, trip } = this.props
         const { filteredStays } = this.state
-        if(filteredStays.length===0)return<PageLoader/>
+        if (filteredStays.length === 0) return <PageLoader />
         const guestsAmount = (trip) ? (trip.guest) ? utilService.getAmount(trip.guest, 'guest') : '' : ''
         const stayLength = utilService.getAmount(filteredStays.length, 'stay')
         const tripDate = (trip) ? (trip.startDate && trip.endDate) ? ` · ${moment(trip.startDate).format('MMM-DD')}-${moment(trip.endDate).format('MMM-DD')}` : '' : ''
@@ -75,7 +81,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-    // loadStay,
+    updateTrip,
     loadStays
 
 }

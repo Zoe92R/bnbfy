@@ -5,7 +5,7 @@
         margin-top: 60px;
     }
 
-    @media (max-width: $mobile-breakpoint) {
+    @media (max-width: $narrow-breakpoint) {
         .react-datepicker__month-container {
             float: none;
         }
