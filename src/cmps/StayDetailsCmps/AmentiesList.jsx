@@ -8,10 +8,7 @@ import Smoking from '../../assets/svg/amenties/smoking.svg';
 import Hot_tub from '../../assets/svg/amenties/hot_tub.svg';
 import Air_conditining from '../../assets/svg/amenties/Air_conditioning.svg';
 
-// import Cooking_basics from '../../assets/svg/amenties/Cooking_basics.svg';
-
 export function AmentiesList({ aments }) {
-
     function getAmenityImg(amenity) {
         switch (amenity) {
             case 'Kitchen':
@@ -32,15 +29,10 @@ export function AmentiesList({ aments }) {
                 return Smoking
             case 'Hot tub':
                 return Hot_tub
-            // case 'Cooking basics':
-            //     return Cooking_basics
             default:
                 return ''
         }
     }
-
-
-
 
     let currImg
     return (
@@ -48,10 +40,10 @@ export function AmentiesList({ aments }) {
             <ul className="aments-list grid">{aments.map((amenity, idx) => {
                 currImg = getAmenityImg(amenity)
                 if (!currImg) return
-                return (
-                    <div key={amenity+idx} className="flex"><img key={amenity} className="amenty-icon" src={currImg} alt="" />
-                    
-                        <li key={idx+amenity} className="clean-list">{amenity}</li> </div>
+                
+                return (<div key={amenity + idx} className="flex">
+                    <img key={amenity} className="amenty-icon" src={currImg} alt="" />
+                    <li key={idx + amenity} className="clean-list">{amenity}</li> </div>
                 )
             })
             }

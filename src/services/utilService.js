@@ -59,9 +59,6 @@ function createOrder(trip, user, stay,) {
         totalPrice: trip.totalPrice,
         startDate: trip.startDate,
         endDate: trip.endDate,
-        // guests: {
-        //     adults: 2, kids: 0, infants: 0
-        // },
         guests: {
             adults: trip.guest.adults ,kids: trip.guest.kids ,infants: trip.guest.infants
         },
@@ -75,8 +72,6 @@ function createOrder(trip, user, stay,) {
         // hostId: stay.host._id,
         status: "pending"
     }
-    console.log('order in util service Id',order._id);
-    console.log('order in util service',order);
     return order
 }
 

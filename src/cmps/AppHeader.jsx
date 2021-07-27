@@ -1,32 +1,19 @@
-import React, { useState, useEffect, createRef } from 'react';
-import { useHistory, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"
-// import React, { Component } from 'react'
+import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux"
 import { NavLink, withRouter } from 'react-router-dom'
 import { UserMenu } from './UserMenu.jsx'
-import { TripSettings } from './HomeCmps/TripSettings'
 import emptyAvatar from '../assets/svg/appHeader/emptyAvatar.svg'
 import hamburger from '../assets/svg/appHeader/hamburger.svg'
 import logo from '../assets/img/Logo/logo-fit.png'
 
-
-
-
-
 export const _AppHeader = (props) => {
-
     const [userProfileToggle, setUserProfileToggle] = useState(false)
     const history = useHistory();
-    const { city } = useParams()
     const { trip } = useSelector(state => state.tripModule)
-
-
-
-
     const toggleProfile = () => {
         setUserProfileToggle(!userProfileToggle)
     }
-
 
     const getHeaderClass = () => {
         return (props.location.pathname !== "/") ? "white" : "no-display"

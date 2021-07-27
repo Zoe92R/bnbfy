@@ -70,8 +70,8 @@ export class BookingModal extends Component {
 
     onReserve = () => {
         let { totalPrice, startDate, endDate, guest } = this.state
-        startDate = moment(startDate).format('YYYY/MM/DD')
-        endDate = moment(endDate).format('YYYY/MM/DD')
+        startDate = moment(startDate).format('YYYY-MM-DD')
+        endDate = moment(endDate).format('YYYY-MM-DD')
         const checkInDets = {
             totalPrice,
             startDate,

@@ -28,6 +28,7 @@
 //Cmp explore
 @import './cmps/ExploreCmps/_stay-list.scss';
 @import './cmps/ExploreCmps/_stay-perview.scss';
+@import './cmps/ExploreCmps/_stay-perview.scss';
 
 //Cmp details
 @import './cmps/DetailsCmps/_stay-details-gallery.scss';
@@ -44,6 +45,9 @@
 @import './cmps/_header.scss';
 @import './cmps/_header-home.scss';
 @import './cmps/_userMenu.scss';
+
+//Loader
+@import './cmps/_page-loader.scss';
 
 //Footer
 @import './cmps/_footer.scss';

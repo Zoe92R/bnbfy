@@ -1,5 +1,4 @@
-import React, { useState, useEffect, createRef } from 'react';
-// import React, { Component } from 'react'
+import React, { useState, useEffect } from 'react';
 import { NavLink, withRouter } from 'react-router-dom'
 import { UserMenu } from './UserMenu.jsx'
 import { TripSettings } from './HomeCmps/TripSettings'
@@ -18,12 +17,11 @@ export const _AppHeaderHome = (props) => {
 
     useEffect(() => {
         if (window.innerWidth < 720) setIsNarrow(true)
-        window.addEventListener('scroll', onScroll)
+        window.addEventListener('scroll', onScroll, {capture: true})
         return () => {
-            // console.log('removed')
-            window.removeEventListener('scroll', onScroll)
+            window.removeEventListener('scroll', onScroll, {capture: true})
         }
-    });
+    },[]);
 
     const toggleProfile = () => {
         setUserProfileToggle(!userProfileToggle)

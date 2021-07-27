@@ -1,8 +1,8 @@
-import { storageService } from './asyncStorageService'
+// import { storageService } from './asyncStorageService'
 import { httpService } from './http.service'
 
-const gStays = require('../data/stay.json')
-const STORAGE_KEY = 'STAY_KEY'
+// const gStays = require('../data/stay.json')
+// const STORAGE_KEY = 'STAY_KEY'
 export const stayService = {
   query,
   getStayById,

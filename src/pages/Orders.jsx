@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { loadOrders, setOrderStatus, saveOrder } from '../store/actions/orderActions.js'
+import { loadOrders, setOrderStatus, saveOrder, removeOrder } from '../store/actions/orderActions.js'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,8 +9,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import moment from "moment"
-// import { Dashboard } from '../cmps/Dashboard.jsx'
 import { orderService } from '../services/orderService.js';
+// import { Dashboard } from '../cmps/Dashboard.jsx'
 // import { ListItemText } from '@material-ui/core';
 
 
@@ -37,7 +37,6 @@ class _Orders extends Component {
     }
 
     getNights = (order) => {
-        // console.log('order.createdAt', order.createdAt);
         let a = moment(order.startDate)
         let b = moment(order.endDate)
         const diff = Math.round(moment.duration(b.diff(a)).asDays())
@@ -49,11 +48,22 @@ class _Orders extends Component {
         } else if (order.status === 'rejected') {
             return <i className="fas fa-times-circle"></i>
         } else {
-            return <div>
-                <button className="btn-accept" onClick={() => this.orderStatusToSave(order, 'accepted')}><i className="far fa-calendar-check"></i></button>
-                <button className="btn-reject" onClick={() => this.orderStatusToSave(order, 'rejected')}><i className="far fa-calendar-times"></i></button>
-            </div>
+            return (<div>
+                <button className="btn-accept"
+                    onClick={() => this.orderStatusToSave(order, 'accepted')}>
+                    <i className="far fa-calendar-check"></i>
+                </button>
+                <button className="btn-reject"
+                    onClick={() => this.onRemove(order._id)}>
+                    <i className="far fa-calendar-times"></i>
+                </button>
+            </div>)
         }
+    }
+    onRemove = async (orderId) => {
+        await this.props.removeOrder(orderId)
+        const orders = await orderService.getOrderByHost('u103')
+        this.setState({hostOrders:orders})
     }
 
     orderStatusToSave = (order, orderStatus) => {
@@ -64,10 +74,7 @@ class _Orders extends Component {
     }
 
     reservationTime = (order) => {
-        // const time = order.createdAt
-        // console.log('time', time)
         const returnTime = moment(order.createdAt).format("DD MMM YYYY")
-        // console.log('order.createdAt', returnTime)
         return returnTime
     }
 
@@ -79,10 +86,8 @@ class _Orders extends Component {
 
 
     render() {
-
         const { orders } = this.props
         const { hostAvatar, hostOrders, hostName } = this.state
-        // console.log('orders in order page',orders);
         if (!orders || orders.length === 0) return <div>LOADING...</div>
         return (
             <React.Fragment>
@@ -93,7 +98,7 @@ class _Orders extends Component {
 
                         <div className="user-pic flex column ">
                             {/* <Dashboard orders={orders} /> */}
-                            <img src={hostAvatar} alt=""/>
+                            <img src={hostAvatar} alt="" />
                             <span className="user-name flex">{hostName}</span>
                         </div>
                         <div className="profile-table flex justify-center align-center">
@@ -118,7 +123,7 @@ class _Orders extends Component {
 
                                             < TableRow key={order._id}>
                                                 <TableCell component="th" scope="row">{this.reservationTime(order)}</TableCell>
-                                                <TableCell align="left" ><img src={order.stay.picture} alt=""/></TableCell>
+                                                <TableCell align="left" ><img src={order.stay.picture} alt="" /></TableCell>
                                                 <TableCell align="left">{order.stay.name}</TableCell>
                                                 <TableCell align="left">{order.buyer.fullname}</TableCell>
                                                 <TableCell align="left">{order.startDate} - {order.endDate}</TableCell>
@@ -149,7 +154,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     loadOrders,
     setOrderStatus,
-    saveOrder
+    saveOrder,
+    removeOrder,
 }
 
 export const Orders = connect(mapStateToProps, mapDispatchToProps)(_Orders)

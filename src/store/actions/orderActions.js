@@ -4,7 +4,6 @@ export function loadOrders() {
     return async dispatch => {
         try {
             const orders = await orderService.query()
-            // console.log('lodaorders in action',orders)
             dispatch({ type: 'SET_ORDERS', orders })
         } catch (err) {
             console.log('stayActions: err in load actions', err)
@@ -38,6 +37,7 @@ export function saveOrder(order) {
         try {
             const saveOrder = await orderService.save(order)
             const type = order._id ? 'UPDATE_ORDER' : 'ADD_ORDER'
+            console.log('type',type);
             dispatch({ type, saveOrder })
         } catch (err) {
             console.log('orderActions: err in save order', err)

@@ -6,17 +6,10 @@ import { TripSettings } from '../cmps/HomeCmps/TripSettings'
 import { AppHeaderHome } from '../cmps/AppHeaderHome'
 import { PopularPlaces } from '../cmps/HomeCmps/PopularPlaces'
 import { TopRated } from '../cmps/HomeCmps/TopRated'
-// import portugal from '../assets/img/popular/portugal.jpg'
-// import spain from '../assets/img/popular/spain.jpg'
 import Madrid from '../assets/img/popular/Madrid.jpg'
 import TelAviv from '../assets/img/popular/TelAviv.jpg'
 import Paris from '../assets/img/popular/Paris.jpg'
 import NewYork from '../assets/img/popular/newYork.jpg'
-// import { PageLoader } from '../cmps/commonCmps/PageLoader.jsx'
-import { logout } from '../store/actions/userActions.js'
-
-
-
 
 //pics from:"https://www.freestock.com/free-photos/church-village-frias-burgos-spain-1513100516"
 //"https://www.freestock.com/free-photos/lisbon-portugal-1080089420"
@@ -44,22 +37,15 @@ class _HomePage extends Component {
     }
 
     async componentDidMount() {
-        console.log(' home page did mount');
-        // window.scroll(0, 0);
-            window.addEventListener('scroll', this.onScroll, false)
+            window.addEventListener('scroll', this.onScroll,  {capture: true})
         await this.props.loadStays()
     }
 
     componentWillUnmount() {
-        window.removeEventListener('scroll', this.onScroll, false)
+        window.removeEventListener('scroll', this.onScroll,  {capture: true})
     }
 
     onScroll = () => {
-        // if (window.innerWidth <= 460) {
-        //     // console.log('mobile inner width')
-        //     this.setState({ isScroll: true })
-        //     return
-        // }
         const pageYOffset = window.pageYOffset
         if (pageYOffset > 80) {
             this.setState({ isScroll: true })
@@ -72,7 +58,6 @@ class _HomePage extends Component {
     render() {
         const { loggedInUser, logout } = this.props
         return (
-
             <div className="main-homepage main-container main-layout">
                 <AppHeaderHome logout={logout} loggedInUser={loggedInUser} />
                 <React.Fragment>
