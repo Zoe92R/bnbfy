@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { utilService } from '../services/utilService'
 import { StayList } from '../cmps/ExploreCmps/StayList.jsx'
 import { StayFilter } from '../cmps/ExploreCmps/StayFilter.jsx'
-import { loadStay, loadStays } from '../store/actions/stayActions.js'
+import { loadStays } from '../store/actions/stayActions.js'
 import { updateTrip } from '../store/actions/tripActions.js'
 import { PageLoader } from '../cmps/commonCmps/PageLoader.jsx'
 import moment from "moment"
@@ -43,7 +43,7 @@ export class _StayApp extends Component {
 
 
     render() {
-        const { stays, trip } = this.props
+        const { trip } = this.props
         const { filteredStays } = this.state
         if (filteredStays.length === 0) return <PageLoader />
         const guestsAmount = (trip) ? (trip.guest) ? utilService.getAmount(trip.guest, 'guest') : '' : ''

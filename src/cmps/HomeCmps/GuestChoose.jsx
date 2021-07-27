@@ -1,4 +1,5 @@
-export function GuestChoose({guestUpdate, guest }) {
+// export const GuestChoose=({ guestUpdate, guest })=> {
+export function GuestChoose({ guestUpdate, guest }) {
 
     function onGuestsUpdate(type, diff) {
         guest[type] += diff

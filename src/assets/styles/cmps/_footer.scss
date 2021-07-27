@@ -6,39 +6,58 @@
     font-weight: 500;
     font-size: $fs14;
     bottom: 0;
-    pointer-events: auto;
+    // pointer-events: auto;
     opacity: 1;
+    padding: 5px;
     p {
         z-index: 1;
     }
     .footer-booking-modal {
-        // position: fixed;
+        position: fixed;
         bottom: 200px;
-        left: 30%;
+        left: 0;
         background-color: white;
     }
     .white {
         background-color: white;
         position: sticky;
+        // bottom: 0;
         padding-bottom: 5px;
+        z-index: 0;
     }
-    @media (max-width: 900px) {
-        .black {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            pointer-events: none;
-            opacity: 1;
-            user-select: none;
-            transition: opacity 0.8s;
-        }
-        // body.menu-open .main-screen {
-        //     pointer-events: auto;
-        //     opacity: 1;
-        // }
+    // @media (max-width: 900px) {
+    //     .black {
+    //         position: fixed;
+    //         bottom: 0;
+    //         right: 0;
+    //         width: 100%;
+    //         height: 100%;
+    //         background-color: rgba(0, 0, 0, 0.5);
+    //         cursor: pointer;
+    //         pointer-events: none;
+    //         opacity: 1;
+    //         user-select: none;
+    //         transition: opacity 0.8s;
+    //     }
+    // body.menu-open .main-screen {
+    //     pointer-events: auto;
+    //     opacity: 1;
+    // }
+
+    .btn-grad {
+        background-image: (
+            radial-gradient(
+                circle at center center,
+                rgb(255, 56, 92) 0%,
+                rgb(230, 30, 77) 27.5%,
+                rgb(227, 28, 95) 40%,
+                rgb(215, 4, 102) 57.5%,
+                rgb(189, 30, 89) 75%,
+                rgb(189, 30, 89) 100%
+            )
+        );
+    }
+    .reserved {
+        background-color: rgb(88, 160, 88);
     }
 }

@@ -10,18 +10,19 @@ import { GuestChoose } from '../HomeCmps/GuestChoose.jsx'
 import { DateRangePicker } from '../commonCmps/DateRangePicker.jsx'
 import { utilService } from '../../services/utilService.js'
 import React from 'react'
+// import { set } from 'lodash'
 
 export class _TripSettings extends Component {
     state = {
         trip: {
             startDate: '',
             endDate: '',
+            countrys: '',
             guest: {
                 adults: 0,
                 kids: 0,
                 infants: 0
             },
-            countrys: '',
         },
         isDatePickerOpen: false,
         isGuestChooseOpen: false,
@@ -55,9 +56,17 @@ export class _TripSettings extends Component {
     }
 
     getAllStays = () => {
-        const arr = this.props.stays.filter(item => item.loc.city.toLowerCase().includes(this.state.trip.countrys.toLowerCase()))
-            .map(arr => arr.loc.city).filter((value, index, self) => self.indexOf(value) === index)
-        return arr
+        // const arr = this.props.stays.filter(item => {
+        let citys = []
+        this.props.stays.forEach(stay => {
+            if (citys.includes(stay.loc.city)) return
+            else citys.push(stay.loc.city)
+        });
+        // const arr = this.props.stays.filter(item => item.loc.city.toLowerCase()
+        // .includes(this.state.trip.countrys.toLowerCase()))
+        //     .map(arr => arr.loc.city)
+        //     .filter((value, index, self) => self.indexOf(value) === index)
+        return citys
 
     }
 
@@ -140,31 +149,44 @@ export class _TripSettings extends Component {
         const filterPlaces = this.getAllStays()
         return (
             <React.Fragment>
-            <div className="filter-warper">
-                <button className="filter-warper-input-txt" onClick={() => this.onToggleChoose('location')}>
-                    {/* <button className="btn-clear-search" onClick={(e) => this.onClearBtn(e, 'guest-btn')}></button> */}
-                    <div className="picker-date-btn-first-line">Location</div>
-                    <input onClick={() => this.onFoucesModal} placeholder="Where are you going?" type="search" list="places" value={trip.countrys} onChange={this.handleChange} autoComplete="off" />
-                </button>
-                {isLocationChooseOpen && filterPlaces && <CitySearchModal
-                    // guestUpdate={this.guestUpdate}
-                    countrys={filterPlaces}
-                    onClickTxtModal={this.onClickTxtModal} />}
+                <div className="filter-warper">
+                    <button className="filter-warper-input-txt"
+                        onClick={() => this.onToggleChoose('location')}>
+                        {/* <button className="btn-clear-search" onClick={(e) => this.onClearBtn(e, 'guest-btn')}></button> */}
+                        <div className="picker-date-btn-first-line">Location</div>
+                        <input onClick={() => this.onFoucesModal}
+                            placeholder="Where are you going?"
+                            type="search"
+                            // list="places"
+                            value={trip.countrys}
+                            onChange={this.handleChange}
+                            autoComplete="off" />
+                    </button>
+                    {isLocationChooseOpen && filterPlaces && <CitySearchModal
+                        // guestUpdate={this.guestUpdate}
+                        countrys={filterPlaces}
+                        onClickTxtModal={this.onClickTxtModal} />}
 
 
-                <button className="picker-date-btn" onClick={() => this.onToggleChoose('date-picker')}>
-                    <div className="picker-date-btn-first-line">Pick a Date</div>
-                    {trip.startDate && `${moment(trip.startDate).format('LL')}`}
-                    {!trip.startDate && <div><div className="picker-date-btn-sec-line">Check-in</div> </div>}
-                </button>
+                    <button className="picker-date-btn"
+                        onClick={() => this.onToggleChoose('date-picker')}>
+                        <div className="picker-date-btn-first-line">Pick a Date</div>
+                        {trip.startDate && `${moment(trip.startDate).format('LL')}`}
+                        {!trip.startDate && <div>
+                            <div className="picker-date-btn-sec-line">Check-in</div>
+                        </div>}
+                    </button>
 
-                <button className="picker-date-btn" onClick={() => this.onToggleChoose('date-picker')}>
-                    <div className="picker-date-btn-first-line">Pick a Date</div>
-                    {trip.endDate && `${moment(trip.endDate).format('LL')}`}
+                    <button className="picker-date-btn"
+                        onClick={() => this.onToggleChoose('date-picker')}>
+                        <div className="picker-date-btn-first-line">Pick a Date</div>
+                        {trip.endDate && `${moment(trip.endDate).format('LL')}`}
 
-                    {!trip.endDate && <div><div className="picker-date-btn-sec-line">Check-out</div> </div>}
-                </button>
-                {/* <div className="flex" style={{ position: "absolute", zIndex: 120, fontWight: 400, top: "168px", right: "13%" }}>
+                        {!trip.endDate && <div>
+                            <div className="picker-date-btn-sec-line">Check-out</div>
+                        </div>}
+                    </button>
+                    {/* <div className="flex" style={{ position: "absolute", zIndex: 120, fontWight: 400, top: "168px", right: "13%" }}>
                     {isDatePickerOpen && <DateRangePicker style={{ backgroundColor: 'red' }} setDate={this.setDate}
                         onToggleChoose={this.onToggleChoose} />}</div> */}
 

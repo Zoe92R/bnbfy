@@ -29,7 +29,7 @@ export class BookingModal extends Component {
         }
         const { trip } = this.props
         if (trip) {
-            if (trip.startDate && trip.startDate) {
+            if (trip.startDate && trip.endDate) {
                 this.setState({ startDate: trip.startDate, endDate: trip.endDate, isDatesPicked: true }, () => this.setDate(this.state.startDate, this.state.endDate))
             }
             if (trip.guest.adults > 0) {
