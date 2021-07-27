@@ -72,7 +72,10 @@ export class _StayDetails extends Component {
         // let timerInterval
         Swal.fire({
             title: 'Thank you for your reservation!',
-            html: `<div style={{white-space: pre-line; font-family:Cereal-Normal}}>${this.props.currStay.name} in ${this.props.currStay.loc.city} \n \n${moment(tripeDetails.startDate).format('LL')}-${moment(tripeDetails.endDate).format('LL')}\n\n <div>`,
+            html: `<div style={{white-space: pre-line; font-family:Cereal-Normal}}>
+            ${this.props.currStay.name} in ${this.props.currStay.loc.city} \n \n
+            ${moment(tripeDetails.startDate).format('LL')}-${moment(tripeDetails.endDate)
+                    .format('LL')}\n\n <div>`,
             timer: 5000,
             showConfirmButton: true,
             confirmButtonColor: 'green',
@@ -98,7 +101,7 @@ export class _StayDetails extends Component {
 
     render() {
         const { currStay } = this.props
-        if (!currStay) return <PageLoader/>
+        if (!currStay) return <PageLoader />
         return (
             <div className={this.isBlack()}>
                 <div className="stay-details main-container main-layout">
@@ -114,7 +117,7 @@ export class _StayDetails extends Component {
                         </div>
                     </div>
                     {!this.state.isCurrentHideGallery && <div className="details-gallery grid">
-                        {currStay.imgUrls.map((currStayImg, idx) => <img key={idx} className="stay-img" src={currStayImg} alt=""/>)}
+                        {currStay.imgUrls.map((currStayImg, idx) => <img key={idx} className="stay-img" src={currStayImg} alt="" />)}
                     </div>}
                     {this.state.isCurrentHideGallery && <ImgCarusel stayId={currStay._id} imgs={currStay.imgUrls} />}
                     <div className="booking-modal-details-container flex space-between">
