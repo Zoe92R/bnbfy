@@ -11,6 +11,7 @@ export const _AppHeader = (props) => {
     const [userProfileToggle, setUserProfileToggle] = useState(false)
     const history = useHistory();
     const { trip } = useSelector(state => state.tripModule)
+    const { loggedInUser } = useSelector(state => state.userModule)
     const toggleProfile = () => {
         setUserProfileToggle(!userProfileToggle)
     }
@@ -20,21 +21,31 @@ export const _AppHeader = (props) => {
     }
 
     const isUserAvatar = () => {
-        if (props.loggedInUser) {
-            return <img className="avatar-home-user" onClick={() => toggleProfile()} src={props.loggedInUser.imgUrl} alt="" />
+        if (loggedInUser) {
+            return <img className="avatar-home-user"
+                onClick={() => toggleProfile()}
+                src={loggedInUser.imgUrl} alt="" />
         } else {
-            return <img className="avatar-home" onClick={() => toggleProfile()} src={emptyAvatar} alt="" />
+            return <img className="avatar-home"
+                onClick={() => toggleProfile()}
+                src={emptyAvatar} alt="" />
         }
     }
 
     const goBack = () => {
-        if (!trip) history.push('/')
-        else if (history.location.pathname.includes("details")) {
-            console.log('in details');
-            history.push(`/stay/location/${trip.countrys}`)
-        }
-        else history.push('/')
+        if (history.location.pathname.includes("details")) {
+            if (trip) history.push(`/stay/location/${trip.countrys}`)
+            else history.push('/stay')
+        } else history.push('/')
     }
+    // const goBack = () => {
+    //     console.log('trip',trip);
+    //     if (!trip) history.push('/')
+    //     else if (history.location.pathname.includes("details")) {
+    //         console.log('in else if');
+    //         history.push(`/stay/location/${trip.countrys}`)
+    //     } else history.push('/')
+    // }
 
 
     return (

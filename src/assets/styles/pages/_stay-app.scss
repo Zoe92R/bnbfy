@@ -3,7 +3,7 @@
     // margin-top: 80px;
     .explore-headline {
         line-height: 30px;
-     
+
         &-criteria {
             font-size: $fs14;
             // padding-top: 30px;
@@ -16,29 +16,30 @@
             &:first-letter {
                 text-transform: capitalize;
             }
-
         }
     }
     .explore-filter-btn {
         height: 90px;
         border-bottom: $defBorder;
-        button {
+        .btn-toggle {
             text-align: center;
             border: 1px solid #000;
             border-color: #b0b0b0;
             border-radius: 30px;
-            padding: .5rem 1rem;
+            padding: 0.5rem 1rem;
             font-family: Cereal-NormalBold;
             font-size: $fs14;
             background-color: #fff;
             margin-bottom: 15px;
-            
+            &:hover {
+                background-color: lightgray;
+            }
             &:first-letter {
                 text-transform: capitalize;
-            } 
+            }
         }
-        
+        .open {
+            background-color: lightgrey;
+        }
     }
-
 }
-

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useSelector } from "react-redux"
-import { useLocation } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 import { saveOrder } from "../store/actions/orderActions"
-import { NavLink, withRouter } from 'react-router-dom'
+// import { NavLink, withRouter } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import moment from "moment"
 import { utilService } from "../services/utilService"
@@ -15,9 +15,9 @@ export const Footer = () => {
     const { trip } = useSelector(state => state.tripModule)
     const [mobile, setMobile] = useState(false)
     const [screenSize, setScreenSize] = useState(0)
-    const [blackMode, setBlackMode] = useState('')
-    const [isBookingModal, setisBookingModal] = useState(false)
+    const [isBookingModal, setIsBookingModal] = useState(false)
     const [reserved, setReserved] = useState(false)
+    const [isNav, setIsNav] = useState(true)
     const user = {
         "_id": "u1021",
         "fullname": "Nisim David",
@@ -30,42 +30,24 @@ export const Footer = () => {
 
     useEffect(() => {
         if (location.pathname.includes('details')) {
-            console.log('mobile')
             setScreenSize(window.innerWidth)
+            setIsNav(false)
             screenSize < 460 ? setMobile(true) : setMobile(false)
         } else {
-            setisBookingModal(false)
+            setIsBookingModal(false)
             setMobile(false)
+            setIsNav(true)
         }
         return () => {
-            console.log('cleanup booking modal');
-            setisBookingModal(false)
+            setIsBookingModal(false)
             setMobile(false)
+            setReserved(false)
         }
         // console.log('location', location.pathname.includes('details'));
     }, [mobile, location, screenSize])
 
-    // useEffect(() => {
-    //     setBlackMode('')
-    //     console.log('clicked');
-    //     setisBookingModal(false)
-    // }, [blackMode])
-
-
     const isWhite = () => {
         return screenSize < 460 ? 'white' : ''
-    }
-
-    const isBlackClass = () => {
-        if (blackMode) {
-            return `modal-mode ${blackMode}`
-        } else {
-            return "modal-mode"
-        }
-    }
-
-    const setIsBlack = (str) => {
-        setBlackMode(str)
     }
 
     const getAvgRage = () => {
@@ -93,33 +75,42 @@ export const Footer = () => {
     }
     return (
         <footer className={`main-footer main-layout full ${isWhite()}`} >
-            <div className={isBlackClass()} >
-                {mobile && <div>
-                    {console.log(mobile)}
-                    <div className="flex space-between">
-                        <span>price: ${currStay && currStay.price}</span>
-                        <button className={`${reserved?'reserved':'btn-grad'}`} onClick={() => setisBookingModal(!isBookingModal)}>
-                            {reserved? 'reserved':'Check Availability'}
-                        </button>
-                    </div>
-                </div>}
-                {isBookingModal && <div className="main-layout footer-booking-modal flex align-center justify-center">
+            {mobile && <div>
+                <div className="flex space-between">
+                    <span>price: ${currStay && currStay.price}</span>
+                    <button
+                        className={`${reserved ? 'reserved' : 'btn-grad'}`}
+                        onClick={() => setIsBookingModal(!isBookingModal)}>
+                        {reserved ? 'reserved' : 'Check Availability'}
+                    </button>
+                </div>
+            </div>}
+            {isNav && mobile && < div className="footer-nav flex ">
+                <NavLink exact to="/stay" className="clean-list"> Explore </NavLink> &nbsp;
+                <NavLink exact to="/" className="clean-list"> Become a Host </NavLink>
+            </div>}
+            {
+                isBookingModal && <div className="main-layout 
+                footer-booking-modal flex
+                align-center justify-center"
+                >
                     <BookingModal
+                        reserved={setReserved}
                         currStay={currStay}
                         trip={trip}
-                        setIsBlack={setIsBlack}
                         onReserve={onReserve}
-                        avgRate={getAvgRage()} />
-                </div>}
-                {/* {!isBookingModal && mobile && <div className="">
+                        avgRate={getAvgRage()}
+                    />
+                </div>
+            }
+            {/* {!isBookingModal && mobile && <div className="">
                  <NavLink exact to="/stay" className="clean-list"> Explore </NavLink>
                 </div>} */}
-                <p>
-                    BnBfy,Inc <i className="far fa-copyright">
-                    </i>-All rights reserved
-                    <i className="far fa-copyright"></i>
-                </p>
-            </div>
+            <p>
+                BnBfy,Inc <i className="far fa-copyright">
+                </i>-All rights reserved
+                <i className="far fa-copyright"></i>
+            </p>
         </footer >
     )
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink, withRouter } from 'react-router-dom'
 import { UserMenu } from './UserMenu.jsx'
 import { TripSettings } from './HomeCmps/TripSettings'
@@ -14,14 +15,15 @@ export const _AppHeaderHome = (props) => {
     const [isScrol, setIsScrol] = useState(false)
     const [isFullFilter, setIsFullFilter] = useState(false)
     const [isNarrow, setIsNarrow] = useState(false)
+    const { loggedInUser } = useSelector(state => state.userModule)
 
     useEffect(() => {
         if (window.innerWidth < 720) setIsNarrow(true)
-        window.addEventListener('scroll', onScroll, {capture: true})
+        window.addEventListener('scroll', onScroll, { capture: true })
         return () => {
-            window.removeEventListener('scroll', onScroll, {capture: true})
+            window.removeEventListener('scroll', onScroll, { capture: true })
         }
-    },[]);
+    }, []);
 
     const toggleProfile = () => {
         setUserProfileToggle(!userProfileToggle)
@@ -35,15 +37,19 @@ export const _AppHeaderHome = (props) => {
         }
     }
 
-    const getHeaderClass = () => {          
+    const getHeaderClass = () => {
         return (props.location.pathname !== "/" || isScrol) ? "white" : ""
     }
 
     const isUserAvatar = () => {
-        if (props.loggedInUser) {
-            return <img className="avatar-home-user" onClick={() => toggleProfile()} src={props.loggedInUser.imgUrl} alt="" />
+        if (loggedInUser) {
+            return <img className="avatar-home-user"
+                onClick={() => toggleProfile()}
+                src={loggedInUser.imgUrl} alt="" />
         } else {
-            return <img className="avatar-home" onClick={() => toggleProfile()} src={emptyAvatar} alt="" />
+            return <img className="avatar-home"
+                onClick={() => toggleProfile()}
+                src={emptyAvatar} alt="" />
         }
     }
 

@@ -24,9 +24,6 @@ export class BookingModal extends Component {
     }
 
     componentDidMount() {
-        if (window.innerWidth < 460) {
-            this.props.setIsBlack('black')
-        }
         const { trip } = this.props
         if (trip) {
             if (trip.startDate && trip.endDate) {
@@ -38,7 +35,7 @@ export class BookingModal extends Component {
         }
     }
     componentWillUnmount() {
-        this.props.setIsBlack('')
+       
     }
 
     setDate = (startDate, endDate) => {

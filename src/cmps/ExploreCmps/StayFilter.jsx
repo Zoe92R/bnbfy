@@ -1,20 +1,26 @@
 
-import { Component } from 'react'
+import { React } from 'react'
 import { TextField } from '@material-ui/core'
 
-export class StayFilter extends Component {
-    c
-    render() {
-        return(
-            <div>
-                 <TextField 
-                 type="number" 
-                 label='Price'
-                 size="small" 
-                  name="keyword" 
-                 variant="outlined"></TextField>
-                </div>
+export const StayFilter = ({ priceFilterModalToggle, loadStays, getCity }) => {
 
-        )
+    const filteredStays = async (ev) => {
+        const price = ev.target.value
+        const city = getCity()
+        await loadStays({ price: price, city: city })
     }
+
+    return (
+        <div className="filter-explor">
+            <TextField
+                type="number"
+                label='Price'
+                size="small"
+                name="keyword"
+                variant="outlined"
+                onChange={filteredStays}>
+            </TextField>
+        </div>
+
+    )
 }

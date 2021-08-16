@@ -79,7 +79,8 @@ class _HomePage extends Component {
                         </div>
                         <div className="top-rated">
                             <h2>Top Rated Stays</h2>
-                            <TopRated stays={this.props.stays} topRatedIds={this.state.topRatedIds} />
+                            <TopRated stays={this.props.stays}
+                                topRatedIds={this.state.topRatedIds} />
                         </div>
                         <div className="see-all flex flex-end">
                             <Link className="see-all clean-list" to='/stay'>See All</Link>

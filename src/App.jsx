@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { routes } from './routes.js'
@@ -17,7 +17,7 @@ class _App extends Component {
           loggedInUser={loggedInUser} />
         {routes.map(route => <Route key={route.path} exact component={route.component} path={route.path} />)}
         <Footer />
-      {/* </div> */}
+        {/* </div> */}
       </React.Fragment>
     )
   }

@@ -39,8 +39,8 @@ export function AmentiesList({ aments }) {
         <div className="aments-container">
             <ul className="aments-list grid">{aments.map((amenity, idx) => {
                 currImg = getAmenityImg(amenity)
-                if (!currImg) return
-                
+                if (!currImg) return ''
+
                 return (<div key={amenity + idx} className="flex">
                     <img key={amenity} className="amenty-icon" src={currImg} alt="" />
                     <li key={idx + amenity} className="clean-list">{amenity}</li> </div>

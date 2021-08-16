@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 // import subDays from "date-fns/subDays"
-// console.log('subDays:', subDays)
 
 export class DateRangePicker extends Component {
 
@@ -25,7 +24,6 @@ export class DateRangePicker extends Component {
     }
 
     render() {
-        console.log(this.props.mobile,'mobile');
         const { startDate, endDate } = this.state;
         return (
             <div>

@@ -15,7 +15,7 @@ export const stayService = {
 async function query(filterBy = {}) {
   // return await storageService.query(STORAGE_KEY, gStays)
   try {
-    return await httpService.get('stay')
+    return await httpService.get('stay',filterBy)
     // await storageService.query(STORAGE_KEY, test)
   } catch (err) {
     throw err

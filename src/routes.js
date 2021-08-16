@@ -4,7 +4,6 @@ import {StayEdit} from './pages/StayEdit.jsx'
 import {HomePage} from './pages/HomePage.jsx'
 import {Orders} from './pages/Orders.jsx'
 import {LoginSignup} from './pages/LoginSignup.jsx'
-// import {LoginSignup} from './pages/LoginSignup.jsx'
 
 export const routes = [
     {

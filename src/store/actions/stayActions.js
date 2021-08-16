@@ -1,11 +1,12 @@
 import { stayService } from "../../services/stayService.js"
 
 
-export function loadStays() {
+export function loadStays(filterBy) {
     return async dispatch => {
         try {
             dispatch({ type: 'LOADING_START' })
-            const stays = await stayService.query()
+            const stays = await stayService.query(filterBy)
+            // console.log('stays in actions',stays);
             dispatch({ type: 'SET_STAYS', stays })
         } catch (err) {
             console.log('stayActions: err in load stays', err)

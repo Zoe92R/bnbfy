@@ -83,6 +83,7 @@ export class _StayDetails extends Component {
 
     render() {
         const { currStay } = this.props
+        window.scrollTo(0, 0)
         if (!currStay) return <PageLoader />
         return (
             <div className={this.isBlack()}>
