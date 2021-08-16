@@ -14,9 +14,15 @@
     }
     .footer-booking-modal {
         position: fixed;
-        bottom: 200px;
+        // bottom: 200px;
+        top: 0;
         left: 0;
         background-color: white;
+        @media (max-width: $narrow-breakpoint) {
+            .react-datepicker__month-container {
+                float: none;
+            }
+        }
     }
     .white {
         background-color: white;

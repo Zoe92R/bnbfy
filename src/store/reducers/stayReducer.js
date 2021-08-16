@@ -15,9 +15,6 @@ export function stayReducer(state = initialState, action) {
             return { ...state, stays: [action.stay, ...state.stays.filter(stay => action.stay._id !== stay._id)] }
         case 'REMOVE_STAY':
             return { ...state, stays: state.stays.filter(stay => stay._id !== action.stayId) }
-        case 'ADD_REVIEW':
-            return { ...state, currStay: { ...state.currStay, reviews: [...state.currStay.reviews, action.review] } }
-
         default:
             return state
     }

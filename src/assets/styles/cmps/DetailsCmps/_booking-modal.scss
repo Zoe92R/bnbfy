@@ -38,6 +38,8 @@
     @media (max-width: $mobile-breakpoint) {
         padding: 5px;
         min-width: 342px;
+        height: 200px;
+        margin-top: 12px;
     }
 
     .price-night {
@@ -52,14 +54,12 @@
         padding-bottom: 24px;
     }
 
-    .date-picker-details {
-        position: absolute;
-        width: 543px;
-        z-index: 100;
-        top: 130px;
-        // top: 61%;
-        right: 6%;
-    }
+    // .date-picker-details {
+        // position: absolute;
+        // z-index: 100;
+        // top: 130px;
+        // right: 6%;
+    // }
 
     // .is-guest-choose,
     // .call-action {

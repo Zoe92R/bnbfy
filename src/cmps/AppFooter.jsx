@@ -30,19 +30,18 @@ export const Footer = () => {
 
     useEffect(() => {
         if (location.pathname.includes('details')) {
-            console.log('mobile')
+            // console.log('mobile')
             setScreenSize(window.innerWidth)
-            screenSize < 460 ? setMobile(true) : setMobile(false)
+            screenSize < 720 ? setMobile(true) : setMobile(false)
         } else {
             setisBookingModal(false)
             setMobile(false)
         }
         return () => {
-            console.log('cleanup booking modal');
+            // console.log('cleanup booking modal');
             setisBookingModal(false)
             setMobile(false)
         }
-        // console.log('location', location.pathname.includes('details'));
     }, [mobile, location, screenSize])
 
     // useEffect(() => {
@@ -53,7 +52,7 @@ export const Footer = () => {
 
 
     const isWhite = () => {
-        return screenSize < 460 ? 'white' : ''
+        return screenSize < 720 ? 'white' : ''
     }
 
     const isBlackClass = () => {
@@ -92,34 +91,34 @@ export const Footer = () => {
         setReserved(true)
     }
     return (
-        <footer className={`main-footer main-layout full ${isWhite()}`} >
-            <div className={isBlackClass()} >
-                {mobile && <div>
-                    {console.log(mobile)}
-                    <div className="flex space-between">
-                        <span>price: ${currStay && currStay.price}</span>
-                        <button className={`${reserved?'reserved':'btn-grad'}`} onClick={() => setisBookingModal(!isBookingModal)}>
-                            {reserved? 'reserved':'Check Availability'}
-                        </button>
-                    </div>
-                </div>}
-                {isBookingModal && <div className="main-layout footer-booking-modal flex align-center justify-center">
-                    <BookingModal
-                        currStay={currStay}
-                        trip={trip}
-                        setIsBlack={setIsBlack}
-                        onReserve={onReserve}
-                        avgRate={getAvgRage()} />
-                </div>}
-                {/* {!isBookingModal && mobile && <div className="">
+            <footer className={`main-footer main-layout full ${isWhite()}`} >
+                <div className={isBlackClass()} >
+                    {mobile && <div>
+                        {console.log(mobile)}
+                        <div className="flex space-between">
+                            <span>price: ${currStay && currStay.price}</span>
+                            <button className={`${reserved ? 'reserved' : 'btn-grad'}`} onClick={() => setisBookingModal(!isBookingModal)}>
+                                {reserved ? 'reserved' : 'Check Availability'}
+                            </button>
+                        </div>
+                    </div>}
+                                {isBookingModal && <div className="main-layout footer-booking-modal flex align-center justify-center">
+                <BookingModal
+                    currStay={currStay}
+                    trip={trip}
+                    setIsBlack={setIsBlack}
+                    onReserve={onReserve}
+                    avgRate={getAvgRage()} />
+            </div>}
+                    {/* {!isBookingModal && mobile && <div className="">
                  <NavLink exact to="/stay" className="clean-list"> Explore </NavLink>
                 </div>} */}
-                <p>
-                    BnBfy,Inc <i className="far fa-copyright">
-                    </i>-All rights reserved
-                    <i className="far fa-copyright"></i>
-                </p>
-            </div>
-        </footer >
+                    <p>
+                        BnBfy,Inc <i className="far fa-copyright">
+                        </i>-All rights reserved
+                        <i className="far fa-copyright"></i>
+                    </p>
+                </div>
+            </footer >
     )
 }

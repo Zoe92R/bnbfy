@@ -12,6 +12,7 @@ export const _AppHeaderHome = (props) => {
 
     const [userProfileToggle, setUserProfileToggle] = useState(false)
     const [isScrol, setIsScrol] = useState(false)
+    const [pageYOffset, setPpageYOffset] = useState(0)
     const [isFullFilter, setIsFullFilter] = useState(false)
     const [isNarrow, setIsNarrow] = useState(false)
 
@@ -23,15 +24,24 @@ export const _AppHeaderHome = (props) => {
         }
     },[]);
 
+    useEffect(() => {
+        setIsFullFilter(false)
+        return () => {
+            
+        }
+    }, [pageYOffset])
+
     const toggleProfile = () => {
         setUserProfileToggle(!userProfileToggle)
     }
     const onScroll = () => {
         const pageYOffset = window.pageYOffset
+        setPpageYOffset(pageYOffset)
         if (pageYOffset > 80) {
             setIsScrol(true)
         } else {
             setIsScrol(false)
+            // setPpageYOffset(0)
         }
     }
 
