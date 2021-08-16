@@ -9,16 +9,19 @@
     // pointer-events: auto;
     opacity: 1;
     padding: 5px;
-    p {
-        z-index: 1;
-    }
     .footer-booking-modal {
         position: fixed;
-        bottom: 200px;
+        // bottom: 200px;
+        top: 0;
         left: 0;
         right: 0;
         align-content: center;
         background-color: white;
+        @media (max-width: $narrow-breakpoint) {
+            .react-datepicker__month-container {
+                float: none;
+            }
+        }
     }
     .white {
         background-color: white;

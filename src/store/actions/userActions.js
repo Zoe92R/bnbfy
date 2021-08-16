@@ -7,6 +7,7 @@ export function login(userCreds) {
       const user = await userService.login(userCreds)
       dispatch({ type: 'SET_USER', user })
     } catch (err) {
+      console.log('error in actions')
       console.log('UserActions: err in login', err)
     }
   }

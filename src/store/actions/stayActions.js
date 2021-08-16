@@ -54,19 +54,3 @@ export function saveStay(stay) {
     }
 }
 
-// export function addReview(stayId, review) {
-//     // console.log('save stay in stay.action')
-//     const type = 'ADD_REVIEW'
-//     return async dispatch => {
-//         try {
-//             // const stayReview = await stayService.addReview(stayId,review)
-//             // dispatch({ type, stayReview })
-//         } catch (err) {
-//             console.log('stayActions: err in add review stays', err)
-//         }
-//     }
-// }
-
-// export function onLogin() {
-//     return 'hellllllooooooo'
-// }

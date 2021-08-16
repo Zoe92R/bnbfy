@@ -122,8 +122,10 @@ export class BookingModal extends Component {
                     isGuestChoose && <GuestChooseDetails
                         toggleChoose={this.toggleChoose} guestUpdate={this.guestUpdate} guest={guest} />
                 }
-                <div className="date-picker-details">
-                    {isDatePickerOpen && <DateRangePickerDetails setDate={this.setDate} openDatePicker={this.openDatePicker} />}
+                <div className="flex justify-center">
+                    <div className="date-picker-details">
+                        {isDatePickerOpen && <DateRangePickerDetails setDate={this.setDate} openDatePicker={this.openDatePicker} />}
+                    </div>
                 </div>
                 {/* { !isDatePickerOpen && this.buttonRender()} */}
                 {this.buttonRender()}

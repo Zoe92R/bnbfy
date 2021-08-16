@@ -30,9 +30,9 @@ export const Footer = () => {
 
     useEffect(() => {
         if (location.pathname.includes('details')) {
+            // console.log('mobile')
             setScreenSize(window.innerWidth)
-            setIsNav(false)
-            screenSize < 460 ? setMobile(true) : setMobile(false)
+            screenSize < 720 ? setMobile(true) : setMobile(false)
         } else {
             setIsBookingModal(false)
             setMobile(false)
@@ -43,11 +43,10 @@ export const Footer = () => {
             setMobile(false)
             setReserved(false)
         }
-        // console.log('location', location.pathname.includes('details'));
     }, [mobile, location, screenSize])
 
     const isWhite = () => {
-        return screenSize < 460 ? 'white' : ''
+        return screenSize < 720 ? 'white' : ''
     }
 
     const getAvgRage = () => {
