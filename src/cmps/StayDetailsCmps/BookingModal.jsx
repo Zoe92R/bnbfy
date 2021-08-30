@@ -34,9 +34,7 @@ export class BookingModal extends Component {
             }
         }
     }
-    componentWillUnmount() {
-       
-    }
+
 
     setDate = (startDate, endDate) => {
         var a = moment(startDate);
@@ -122,12 +120,12 @@ export class BookingModal extends Component {
                     isGuestChoose && <GuestChooseDetails
                         toggleChoose={this.toggleChoose} guestUpdate={this.guestUpdate} guest={guest} />
                 }
-                <div className="flex justify-center">
+                <div className="date-picker-details-container flex justify-center">
                     <div className="date-picker-details">
-                        {isDatePickerOpen && <DateRangePickerDetails setDate={this.setDate} openDatePicker={this.openDatePicker} />}
+                        {/* {isDatePickerOpen && <DateRangePicker setDate={this.setDate} openDatePicker={this.openDatePicker} />} */}
+                        {isDatePickerOpen && <DateRangePickerDetails setDate={this.setDate} openDatePicker={this.openDatePicker} isMobileMode={this.props.isMobileMode}/>}
                     </div>
                 </div>
-                {/* { !isDatePickerOpen && this.buttonRender()} */}
                 {this.buttonRender()}
                 {
                     this.state.isDatesPicked &&

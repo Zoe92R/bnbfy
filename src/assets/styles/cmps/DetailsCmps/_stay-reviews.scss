@@ -16,6 +16,11 @@
         padding: 48px 0 24px;
     }
     .user-info {
+
+        .MuiRating-root{
+            z-index: -1;
+        }
+        
         img {
             width: 56px;
             height: 56px;

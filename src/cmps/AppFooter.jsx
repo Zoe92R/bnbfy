@@ -17,14 +17,13 @@ export const Footer = () => {
     const [screenSize, setScreenSize] = useState(0)
     const [isBookingModal, setIsBookingModal] = useState(false)
     const [reserved, setReserved] = useState(false)
-    const [isNav, setIsNav] = useState(true)
+    const [isNav, setIsNav] = useState(false)
     const user = {
         "_id": "u1021",
         "fullname": "Nisim David",
     }
 
     useEffect(() => {
-        // console.log('innerwidth', window.innerWidth);
         setScreenSize(window.innerWidth)
     }, [])
 
@@ -34,6 +33,7 @@ export const Footer = () => {
             setScreenSize(window.innerWidth)
             screenSize < 720 ? setMobile(true) : setMobile(false)
         } else {
+            console.log('not in details')
             setIsBookingModal(false)
             setMobile(false)
             setIsNav(true)
@@ -42,10 +42,12 @@ export const Footer = () => {
             setIsBookingModal(false)
             setMobile(false)
             setReserved(false)
+            setIsNav(false)
         }
-    }, [mobile, location, screenSize])
+    }, [mobile, location.pathname, screenSize])
 
     const isWhite = () => {
+
         return screenSize < 720 ? 'white' : ''
     }
 
@@ -73,22 +75,41 @@ export const Footer = () => {
         setReserved(true)
     }
     return (
-        <footer className={`main-footer main-layout full ${isWhite()}`} >
-            {mobile && <div>
-                <div className="flex space-between">
-                    <span>price: ${currStay && currStay.price}</span>
-                    <button
-                        className={`${reserved ? 'reserved' : 'btn-grad'}`}
-                        onClick={() => setIsBookingModal(!isBookingModal)}>
-                        {reserved ? 'reserved' : 'Check Availability'}
-                    </button>
-                </div>
-            </div>}
-            {isNav && mobile && < div className="footer-nav flex ">
-                <NavLink exact to="/stay" className="clean-list"> Explore </NavLink> &nbsp;
-                <NavLink exact to="/" className="clean-list"> Become a Host </NavLink>
-            </div>}
-            {
+        <>
+
+            <div className={`footer-booking-modal-container ${isBookingModal ? 'modal-mode' : ''}`}>
+                {isBookingModal && <div className="
+                footer-booking-modal flex
+                align-center justify-center"
+                >
+                    <BookingModal
+                        reserved={setReserved}
+                        currStay={currStay}
+                        trip={trip}
+                        onReserve={onReserve}
+                        avgRate={getAvgRage()}
+                        isMobileMode={mobile}
+                    />
+                </div>}
+            </div>
+
+
+            <footer className={`main-footer main-layout full ${isWhite()}`} >
+                {mobile && <div>
+                    <div className="flex space-between">
+                        <span>price: ${currStay && currStay.price}</span>
+                        <button
+                            className={`${reserved ? 'reserved' : 'btn-grad'}`}
+                            onClick={() => setIsBookingModal(!isBookingModal)}>
+                            {reserved ? 'reserved' : 'Check Availability'}
+                        </button>
+                    </div>
+                </div>}
+                {isNav && mobile && < div className="footer-nav flex ">
+                    <NavLink exact to="/stay" className="clean-list"> Explore </NavLink> &nbsp;
+                    <NavLink exact to="/" className="clean-list"> Become a Host </NavLink>
+                </div>}
+                {/* {
                 isBookingModal && <div className="main-layout 
                 footer-booking-modal flex
                 align-center justify-center"
@@ -99,17 +120,21 @@ export const Footer = () => {
                         trip={trip}
                         onReserve={onReserve}
                         avgRate={getAvgRage()}
+                        isMobileMode={mobile}
                     />
                 </div>
-            }
-            {/* {!isBookingModal && mobile && <div className="">
+            } */}
+
+
+                {/* {!isBookingModal && mobile && <div className="">
                  <NavLink exact to="/stay" className="clean-list"> Explore </NavLink>
                 </div>} */}
-            <p>
-                BnBfy,Inc <i className="far fa-copyright">
-                </i>-All rights reserved
-                <i className="far fa-copyright"></i>
-            </p>
-        </footer >
+                {!mobile && <p>
+                    BnBfy,Inc <i className="far fa-copyright">
+                    </i>-All rights reserved
+                    <i className="far fa-copyright"></i>
+                </p>}
+            </footer >
+        </>
     )
 }

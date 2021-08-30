@@ -6,6 +6,9 @@
     border: none;
     background-color: transparent;
     height: 56px;
+    @media (max-width: $mobile-breakpoint) {
+        width: 142px;
+    }
 }
 .check-1 {
     // border-radius: 8px 0 0 0;
@@ -23,6 +26,7 @@
     flex-direction: column;
     width: fit-content;
     height: fit-content;
+    // height: 286px;
     border-collapse: collapse;
     box-sizing: border-box;
     border: none;
@@ -34,11 +38,12 @@
     padding: 24px;
     box-shadow: #0000001f 0px 6px 16px;
     min-width: 372px;
+    background: white;
 
     @media (max-width: $mobile-breakpoint) {
         padding: 5px;
-        min-width: 342px;
-        height: 200px;
+        min-width: 300px;
+        // height: 200px;
         margin-top: 12px;
     }
 
@@ -54,25 +59,21 @@
         padding-bottom: 24px;
     }
 
-    // .date-picker-details {
-        // position: absolute;
-        // z-index: 100;
-        // top: 130px;
-        // right: 6%;
-    // }
+    .react-datepicker__month-container {
+        float: none;
+    }
 
-    // .is-guest-choose,
-    // .call-action {
-    //     width: 320px;
-    // }
+    .react-datepicker__portal .react-datepicker__day-name,
+    .react-datepicker__portal .react-datepicker__day,
+    .react-datepicker__portal .react-datepicker__time-name {
+        width: 1.5rem;
+        line-height: 1.5rem;
+    }
+    .react-datepicker__portal .react-datepicker__current-month,
+    .react-datepicker__portal .react-datepicker-time__header {
+        font-size: 1.2;
+    }
 
-    // .is-guest-choose {
-    //     height: 56px;
-    //     border: none;
-    //     border-top: 1px solid #717171;
-    //     background-color: transparent;
-    //     text-align: center;
-    // }
     .dets-guest-choose {
         height: 56px;
         border: none;
@@ -80,6 +81,7 @@
         background-color: transparent;
         text-align: center;
     }
+
     .call-action,
     .btn-reserved {
         margin-top: 20px;
