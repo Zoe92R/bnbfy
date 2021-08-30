@@ -5,7 +5,7 @@ import { StayList } from '../cmps/ExploreCmps/StayList.jsx'
 import { StayFilter } from '../cmps/ExploreCmps/StayFilter.jsx'
 import { loadStays } from '../store/actions/stayActions.js'
 import { updateTrip } from '../store/actions/tripActions.js'
-// import { PageLoader } from '../cmps/commonCmps/PageLoader.jsx'
+import { PageLoader } from '../cmps/commonCmps/PageLoader.jsx'
 import moment from "moment"
 
 export class _StayApp extends Component {

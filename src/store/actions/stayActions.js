@@ -6,7 +6,6 @@ export function loadStays(filterBy) {
         try {
             dispatch({ type: 'LOADING_START' })
             const stays = await stayService.query(filterBy)
-            // console.log('stays in actions',stays);
             dispatch({ type: 'SET_STAYS', stays })
         } catch (err) {
             console.log('stayActions: err in load stays', err)
