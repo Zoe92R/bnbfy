@@ -63,9 +63,16 @@
         margin-right: 48px;
     }
 
-    // .date-picker-details{
-    //     position: absolute;
-    // }
+    .date-picker-details-container {
+        // position: absolute;
+        .date-picker-details {
+            position: absolute;
+            top: 130px;
+            @media (max-width: $narrow-breakpoint) {
+                top: 20px;
+            }
+        }
+    }
 
     .img-carusel-details {
         display: none;

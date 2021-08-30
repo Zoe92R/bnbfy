@@ -21,7 +21,6 @@ export class DateRangePickerDetails extends Component {
             startDate:
                 start, endDate: end
         })
-        // if (start && end) this.props.onToggleChoose('date-picker')
         if (start && end) this.props.openDatePicker()
         this.props.setDate(start, end)
     }
@@ -41,6 +40,7 @@ export class DateRangePickerDetails extends Component {
                     minDate={new Date()}
                     monthsShown={2}
                     inline={true}
+                    withPortal={this.props.isMobileMode}
                 />
             </div>
         )

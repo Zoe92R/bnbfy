@@ -82,9 +82,10 @@ export class _StayDetails extends Component {
     }
 
     render() {
-        const { currStay } = this.props
+        const { currStay, isLoading } = this.props
         window.scrollTo(0, 0)
-        if (!currStay) return <PageLoader />
+        // if (!currStay) return <PageLoader />
+        if (isLoading || !currStay) return <PageLoader />
         return (
             <div className={this.isBlack()}>
                 <div className="stay-details main-container main-layout">
@@ -146,6 +147,7 @@ function mapStateToProps(state) {
         currStay: state.stayModule.currStay,
         trip: state.tripModule.trip,
         orders: state.orderModule.orders,
+        isLoading: state.systemModule.isLoading
         // users: state.usersModule.users
     }
 }

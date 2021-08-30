@@ -7,7 +7,11 @@ export const StayFilter = ({ priceFilterModalToggle, loadStays, getCity }) => {
     const filteredStays = async (ev) => {
         const price = ev.target.value
         const city = getCity()
-        await loadStays({ price: price, city: city })
+        if (!city) {
+            await loadStays({ price: price })
+        } else {
+            await loadStays({ price: price, city: city })
+        }
     }
 
     return (

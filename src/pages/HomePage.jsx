@@ -10,6 +10,7 @@ import Madrid from '../assets/img/popular/Madrid.jpg'
 import TelAviv from '../assets/img/popular/TelAviv.jpg'
 import Paris from '../assets/img/popular/Paris.jpg'
 import NewYork from '../assets/img/popular/newYork.jpg'
+import { PageLoader } from '../cmps/commonCmps/PageLoader'
 
 //pics from:"https://www.freestock.com/free-photos/church-village-frias-burgos-spain-1513100516"
 //"https://www.freestock.com/free-photos/lisbon-portugal-1080089420"
@@ -57,6 +58,7 @@ class _HomePage extends Component {
 
     render() {
         const { loggedInUser, logout } = this.props
+        this.props.isLoading && <PageLoader/>
         return (
             <div className="main-homepage main-container main-layout">
                 <AppHeaderHome logout={logout} loggedInUser={loggedInUser} />
