@@ -7,10 +7,19 @@ export const StayFilter = ({ loadStays, getCity }) => {
     const filteredStays = async (ev) => {
         const price = ev.target.value
         const city = getCity()
-        if (!city) {
+        // if (!city) {
+        //     await loadStays({ price: price })
+        // } else {
+        //     await loadStays({ price: price, city: city })
+        // }
+        if (!city && price) {
             await loadStays({ price: price })
-        } else {
+        } else if (city && price) {
             await loadStays({ price: price, city: city })
+        } else if (city && !price) {
+            await loadStays({ city: city })
+        } else {
+            await loadStays()
         }
     }
 

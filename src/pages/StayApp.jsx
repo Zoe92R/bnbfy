@@ -7,7 +7,7 @@ import { loadStays } from '../store/actions/stayActions.js'
 import { updateTrip } from '../store/actions/tripActions.js'
 import { PageLoader } from '../cmps/commonCmps/PageLoader.jsx'
 import moment from "moment"
-import { PageLoader } from '../cmps/commonCmps/PageLoader'
+// import { PageLoader } from '../cmps/commonCmps/PageLoader'
 
 export class _StayApp extends Component {
     state = {
@@ -80,7 +80,7 @@ export class _StayApp extends Component {
     }
 
     render() {
-        if (this.props.isLoading) return <PageLoader/>
+        if (this.props.isLoading && !this.state.isPriceFilterOpen) return <PageLoader />
         // console.log('props',this.props);
         window.scrollTo(0, 0)
         const { trip } = this.props
