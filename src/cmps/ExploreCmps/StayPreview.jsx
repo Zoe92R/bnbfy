@@ -3,15 +3,9 @@ import '../../assets/styles/font/fontawesome/css/all.css'
 import { utilService } from '../../services/utilService.js'
 import { ImgCarusel } from './ImgCarusel.jsx'
 
-import { PageLoader } from '../commonCmps/PageLoader'
-
-// export const StayPreview = ({stay}) => {
-export function StayPreview({ stay }) {
-
+export const StayPreview = ({ stay }) => {
 
     const reviewLength = utilService.getAmount(stay.reviews.length, 'review')
-    // if (Object.keys(stay).length === 0) return <PageLoader />
-    // if (isLoading || (Object.keys(stay).length === 0)) return <PageLoader />
     return (
         <article className="explore-card">
             <ImgCarusel stayId={stay._id} imgs={stay.imgUrls} />

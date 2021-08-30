@@ -29,11 +29,9 @@ export const Footer = () => {
 
     useEffect(() => {
         if (location.pathname.includes('details')) {
-            // console.log('mobile')
             setScreenSize(window.innerWidth)
             screenSize < 720 ? setMobile(true) : setMobile(false)
         } else {
-            console.log('not in details')
             setIsBookingModal(false)
             setMobile(false)
             setIsNav(true)

@@ -37,7 +37,6 @@ export function saveOrder(order) {
         try {
             const saveOrder = await orderService.save(order)
             const type = order._id ? 'UPDATE_ORDER' : 'ADD_ORDER'
-            console.log('type',type);
             dispatch({ type, saveOrder })
         } catch (err) {
             console.log('orderActions: err in save order', err)

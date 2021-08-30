@@ -45,7 +45,6 @@ async function remove(orderId) {
 
 
 async function save(order) {
-  console.log('order',order);
   if (order._id) {
     return await httpService.put(`order/${order._id}`, order)
   }

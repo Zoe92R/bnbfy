@@ -22,7 +22,6 @@ export function loadStay(stayId) {
         try {
             dispatch({ type: 'LOADING_START' })
             const stay = await stayService.getStayById(stayId) // get by id in the service
-            console.log( 'stay in load stay action',stay)
             dispatch({ type: 'SET_STAY', stay })
         } catch (err) {
             console.log('stayActions: err in load stay', err)
